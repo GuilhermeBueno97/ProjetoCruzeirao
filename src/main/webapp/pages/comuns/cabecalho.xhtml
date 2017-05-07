@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<p:commandButton  style="float:right" value="Logout" action="/login.xhtml?faces-redirect=true"/>
+	
+	<h:panelGrid columns="1" width="90%">
+		 <p:graphicImage height="100"
+		                 width="230"
+					    library="sistema" 
+						name="imagens/javaman.png"
+						alt="#{msg['pages.comuns.cabecalho.img.alt']}" 
+						title="#{msg['pages.comuns.cabecalho.img.title']}" />
+		
+		
+		<p:outputLabel value="#{msg['pages.comuns.cabecalho.headerText']}" />
+		
+	</h:panelGrid>
+</ui:composition>

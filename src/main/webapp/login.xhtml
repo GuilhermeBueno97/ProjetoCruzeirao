@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+</h:head>
+<h:body>
+	<f:metadata>
+		<f:event listener="#{loginBean.preRender}" type="preRenderView"></f:event>
+	</f:metadata>
+	
+	<p:panel id="pnl" header="Sistema Cruzeirão"
+		style="border-color:black;border-width:2px; border-style:solid; width:400px; margin-left:auto; margin-right:auto;">
+		
+		<p:growl id="messages" sticky="false" life="3000"
+			for="mensagemGrowl" autoUpdate="true" />
+		
+		<h:form style="float:center" id="login" prependId="false">
+			<p:focus/>
+			<!-- <p:messages id="messages" />  -->
+			<h:panelGrid id="panel"
+				style="margin:3%; text-align: center">
+
+				<h:outputLabel value="Login" />
+				<p:inputText type="text" id="username" autocomplete="off" size="30"
+					maxlength="80" label="Usuário">
+					<p:watermark value="Usuário" for="username"></p:watermark>
+				</p:inputText>
+				
+				<p:password size="30" id="password" value="Senha:" maxlength="20">
+					<p:watermark value="Senha" for="password"></p:watermark>
+				</p:password>
+
+				<p:commandButton value="Login" ajax="false"
+					action="#{loginBean.login}"
+					style="width: 50%; max-width: 200px;" />
+
+			</h:panelGrid>
+
+
+		</h:form>
+
+		<h:form style="float:center" id="login2" prependId="false">
+			<div align="center">
+				<p:commandButton value="Cadastrar"
+					action="/pages/cadastroUsuario.xhtml?faces-redirect=true"
+					ajax="false" style="width: 50%; max-width: 200px;" />
+			</div>
+		</h:form>
+	</p:panel>
+
+
+	<p:blockUI block="pnl" />
+
+</h:body>
+</html>

@@ -1,0 +1,47 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.listaJogadores.title']}" />
+	</ui:define>
+
+	<ui:define name="principal">
+	
+	 <p:dataTable  id="jogadores" var="jog">
+        <f:facet name="header">
+           #{msg['pages.listaJogadores.tabletitle']}
+            <p:inputText  id="search" />
+            <p:commandButton  value="#{msg['pages.listaJogadores.pesquisa']}" type="button"/>
+        </f:facet>      
+        
+        <p:column  headerText="#{msg['pages.listaJogadores.nomeJogador']}"/> 
+        
+         <p:column  headerText="#{msg['pages.listaJogadores.cpfJogador']}"/>         
+        
+        <p:column headerText="#{msg['pages.listaJogadores.posicao']}"/>
+           
+        <p:column headerText="#{msg['pages.listaJogadores.idade']}"/>
+                  
+        <p:column headerText="#{msg['pages.listaJogadores.sexo']}"/>
+          
+        <p:column width="150" headerText="#{msg['pages.listaJogadores.selecionar']}">             
+        <p:selectBooleanCheckbox value=" "/>    
+         </p:column>
+    </p:dataTable>
+	  
+	  
+	 
+	</ui:define>
+</ui:composition>
+
+
+
+
+
+

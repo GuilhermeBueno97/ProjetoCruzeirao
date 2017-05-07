@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+</h:head>
+<h:body>
+		
+    <p:growl id="growl" />
+    <h:form style="float:center" id="cadastro" prependId="false">
+	<div align="center">   
+    
+    	<p:panel id="pnl" header="Cadastrar Usuario"  style="border-color:black;border-width:2px; border-style:solid; width:400px; margin-left:auto; margin-right:auto;">
+        <p:messages id="messages" />
+        <h:panelGrid columns="2" cellpadding="5" id="panel" style="margin:1%; text-align: center">
+        
+            <h:outputLabel for="firstname" size="30" value="Nome: *" />            
+            <p:inputText id="firstname" required="true" label="Firstname">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+ 
+            <h:outputLabel size="30" value="Login: *" />
+            <p:inputText id="login" required="true" label="Login"/>
+           
+            <h:outputLabel size="30" value="Senha: *" />
+            <p:password id="inlineFeedback" value="#{passwordView.password4}" feedback="true" inline="true" />
+            
+             <h:outputLabel size="30" value="Email: *" />
+            <p:inputText id="Email" required="true" label="Email"/>
+            
+             <h:outputLabel size="30" value="CPF: *" />
+            <p:inputText id="Cpf" required="true" label="Cpf"/>  
+            
+            <h:outputLabel for="func" value="Função:" />            
+              <p:selectCheckboxMenu id="func"  label="Funções">
+            <f:selectItem itemLabel="Jogador" itemValue="Jogador"/>
+            <f:selectItem itemLabel="Técnico" itemValue="Técnico"/>
+            <f:selectItem itemLabel="Diretor" itemValue="Diretor"/>
+            <f:selectItem itemLabel="Juiz" itemValue="Juiz"/>
+            <f:selectItem itemLabel="Preparador Fisico" itemValue="Preparador Fisico"/>
+            <f:selectItem itemLabel="Massagista" itemValue="Massagista"/>
+            <f:selectItem itemLabel="Organizador" itemValue="Organizador"/>
+              </p:selectCheckboxMenu>              
+            
+        </h:panelGrid>
+ 
+        <p:commandButton id="saveBtn" value="Save" icon="ui-icon-check" style="margin:0" update="growl" 
+        action="/login.xhtml?faces-redirect=true"/>
+    </p:panel>
+    </div>
+    
+    </h:form>
+   </h:body>
+	</html>

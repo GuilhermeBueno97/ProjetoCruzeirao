@@ -1,0 +1,53 @@
+
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.inscreverTime.title']}" />
+	</ui:define>
+	
+
+	<ui:define name="principal">
+	  
+	  <p:panel id="pnl" header="#{msg['pages.inscreverTime.menu']}"  style="border-color:black;border-width:2px; border-style:solid; ">
+	  
+	  <h:form id="formInscTime">	
+	  <p:panelGrid columns="2">
+      <p:outputLabel for="camp" value="#{msg['pages.inscreverTime.campeonato']}" />
+        <p:selectOneMenu id="camp" style="width:125px">
+            <f:selectItem itemLabel="#{msg['pages.inscreverTime.submenu']}" itemValue="" />
+            <f:selectItem itemLabel="Cruzeirão" itemValue="Cruzeirão" />
+            <f:selectItem itemLabel="Brasileirão" itemValue="Brasileirão" />
+            <f:selectItem itemLabel="Paulistão" itemValue="Paulistão" />
+        </p:selectOneMenu>
+        
+        <p:outputLabel for="categ" value="#{msg['pages.inscreverTime.categoria']}" />
+        <p:selectOneMenu id="categ" style="width:125px">
+            <f:selectItem itemLabel="#{msg['pages.inscreverTime.submenu']}" itemValue="" />
+            <f:selectItem itemLabel="Infantil" itemValue="Infantil" />
+            <f:selectItem itemLabel="Adulto" itemValue="Adulto" />
+            <f:selectItem itemLabel="Veterano" itemValue="Veterano" />
+        </p:selectOneMenu>
+	  </p:panelGrid>
+	  <p:commandButton value="#{msg['pages.inscreverTime.btnSalvar']}"
+	                 update=":formInscTime"
+	                 action="/pages/listarJogadores.xhtml?faces-redirect=true"
+	                 />
+       </h:form>
+       </p:panel>
+	
+ 		   
+	</ui:define>
+</ui:composition>
+
+
+
+
+
+

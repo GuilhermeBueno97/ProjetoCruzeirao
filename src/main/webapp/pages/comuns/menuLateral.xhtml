@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+		
+	<h:form >
+    <p:growl id="messages" showDetail="true"/>
+ 
+    <p:slideMenu style="height: 350px">
+        <p:submenu label="#{msg['pages.comuns.menuLateral.cadastro']}" >
+            <p:menuitem value="#{msg['pages.cadastroTime.menu']}" url="cadastroTime.xhtml" ajax="false" 
+            />
+            <p:menuitem value="#{msg['pages.cadastroCampeonato.menu']}" url="cadastroCampeonato.xhtml" 
+            ajax="false" />
+            <p:menuitem value="#{msg['pages.inscreverTime.menu']}" url="inscreverTime.xhtml" 
+            ajax="false" />
+        </p:submenu>
+        <p:submenu label="#{msg['pages.comuns.menuLateral.jogos']}" >
+            <p:menuitem value="#{msg['pages.chave.menu']}" url="chave.xhtml" ajax="false" 
+            />
+            <p:menuitem value="#{msg['pages.resultados.menu']}" url="resultados.xhtml" 
+            ajax="false" />
+        </p:submenu>
+        <p:submenu label="#{msg['pages.comuns.menuLateral.listar']}" >           
+            <p:menuitem value="#{msg['pages.listaJogadores.menu']}" url="listarJogadores.xhtml" />
+            <p:menuitem value="#{msg['pages.listaConvite.menu']}" url="listarConvites.xhtml" />
+        </p:submenu>
+        <p:submenu label="#{msg['pages.comuns.menuLateral.organizador']}" >           
+            <p:menuitem value="#{msg['pages.autorizaInsc.menu']}" url="autorizacaoInscricao.xhtml" />
+        </p:submenu>
+        
+        <p:submenu label="#{msg['pages.comuns.menuLateral.options']}" >           
+            <p:menuitem value="#{msg['pages.linguagem.menu']}" url="linguagem.xhtml" />
+        </p:submenu>
+    </p:slideMenu>
+    
+ 
+</h:form>
+</ui:composition>
+
