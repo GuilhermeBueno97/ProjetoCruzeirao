@@ -3,7 +3,6 @@ package sistema.security;
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthoritiesContainer;
 import org.springframework.security.core.userdetails.User;
 
 import sistema.modelos.Usuario;

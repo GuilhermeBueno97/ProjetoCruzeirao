@@ -20,9 +20,10 @@ private static UserDetailsService usuarioService = new UsuarioSistemaService();
 	
    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+
+       auth.inMemoryAuthentication().withUser("adm").password("123").roles("ADMIN");
 	   auth.userDetailsService(usuarioService);
 	   
-        
         
     }
 
@@ -37,30 +38,26 @@ private static UserDetailsService usuarioService = new UsuarioSistemaService();
         
         //Libera todos os recursos do JSF
         http.authorizeRequests().antMatchers("/javax.faces.resource/**").permitAll();
+        http.authorizeRequests().antMatchers("/pages/welcome.xhtml").permitAll();
+        http.authorizeRequests().antMatchers("/pages/cadastroUsuario.xhtml").permitAll();
         
-        
-        //Controla o acesso a página protegida  do adm        
-        http.authorizeRequests().antMatchers("/pages/adm/**").hasRole("ADMIN");
-                
+        //Controla o acesso a página protegida do adm        
+        //http.authorizeRequests().antMatchers("/pages/adm/**").hasRole("ADMIN");
     	
     	//Login
     	http.formLogin().loginPage("/login.xhtml").permitAll()
-		.defaultSuccessUrl("/pages/sistema.xhtml", true)
+		.defaultSuccessUrl("/pages/inicio.xhtml", true)
 		.failureUrl("/login.xhtml?error=true")
 		.usernameParameter("username")
 		.passwordParameter("password");
     	
-    	
     	//Logout
         http.logout().logoutUrl("/logout")
-                     .logoutSuccessUrl("/login.xhtml");
+                     .logoutSuccessUrl("/pages/welcome.xhtml");
 
         // Todas as requisições para partes internas da aplicação devem ser autenticadas
 		http.authorizeRequests().anyRequest().authenticated();
-    	
-    	
-    	
-        
+        //http.antMatcher("/pages/cadastroUsuario.xhtml").anonymous();
     }
 
     @Override

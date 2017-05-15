@@ -4,13 +4,16 @@ import java.util.ArrayList;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
+@Table(name="paunocu")
 @NamedQuery(name = "Usuario.pesquisarPorUsername", query = "select u from Usuario u where u.username = :username")
 public class Usuario extends Pessoa implements Serializable{
 	
@@ -20,6 +23,7 @@ public class Usuario extends Pessoa implements Serializable{
 	
 	@Id
 	@GeneratedValue
+	@Column
 	private int id_usuario;
 	
 	@Transient
@@ -57,7 +61,6 @@ public class Usuario extends Pessoa implements Serializable{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
 	public int getId_usuario() {
 		return id_usuario;
 	}

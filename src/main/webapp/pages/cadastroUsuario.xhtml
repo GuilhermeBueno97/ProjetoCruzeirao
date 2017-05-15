@@ -17,23 +17,24 @@
         <h:panelGrid columns="2" cellpadding="5" id="panel" style="margin:1%; text-align: center">
         
             <p:outputLabel size="30" value="Nome: *" />            
-            <p:inputText id="firstname" required="true" label="Firstname">
+            <p:inputText id="Nome" required="true" value="#{mbUser.usuario.nome}" label="Nome">
             </p:inputText>
  
             <p:outputLabel size="30" value="Login: *" />
-            <p:inputText id="login" required="true" label="Login"/>
+            <p:inputText id="Login" required="true" value="#{mbUser.usuario.username}" label="Login"/>
            
             <p:outputLabel size="30" value="Senha: *" />
-            <p:password id="inlineFeedback" value="#{passwordView.password4}" feedback="true" inline="true" />
+            <!-- <p:password id="inlineFeedback" value="#{passwordView.password4}" feedback="true" inline="true" /> -->
+            <p:inputText id="Senha" required="true" value="#{mbUser.usuario.senha}" label="Senha"/>
             
             <p:outputLabel size="30" value="Email: *" />
-            <p:inputText id="Email" required="true" label="Email"/>
+            <p:inputText id="Email" required="true" value="#{mbUser.usuario.email}" label="Email"/>
             
             <p:outputLabel size="30" value="CPF: *" />
-            <p:inputText id="Cpf" required="true" label="Cpf"/>  
+            <p:inputText id="Cpf" required="true" value="#{mbUser.usuario.cpf}" label="Cpf"/>  
             
             <p:outputLabel for="func" value="Função:" />            
-            <p:selectCheckboxMenu id="func"  label="Funções">
+            <p:selectCheckboxMenu id="func" label="Funções">
             <f:selectItem itemLabel="Jogador" itemValue="Jogador"/>
             <f:selectItem itemLabel="Técnico" itemValue="Técnico"/>
             <f:selectItem itemLabel="Diretor" itemValue="Diretor"/>
@@ -41,11 +42,11 @@
             <f:selectItem itemLabel="Preparador Fisico" itemValue="Preparador Fisico"/>
             <f:selectItem itemLabel="Massagista" itemValue="Massagista"/>
             <f:selectItem itemLabel="Organizador" itemValue="Organizador"/>
-              </p:selectCheckboxMenu>
+            </p:selectCheckboxMenu>
             
         </h:panelGrid>
         <p:commandButton id="saveBtn" value="Save" icon="ui-icon-check" style="margin:0" update="growl" 
-        action="/login.xhtml?faces-redirect=true"/>
+        action="#{mbUser.salvar}"/>
     </p:panel>
     <!--  </div> -->
     

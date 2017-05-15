@@ -14,9 +14,10 @@ public class UsuarioManagedBean {
 	private Usuario usuario = new Usuario();
 	private UsuarioService service = new UsuarioService();
 	
-	public void salvar(){
+	public String salvar(){
 		service.salvar(usuario);
 		usuario = new Usuario();
+		return "inicio";
 	}
 
 	public List<Usuario> getUsuarios(){
