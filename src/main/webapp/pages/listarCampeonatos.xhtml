@@ -1,0 +1,61 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.listaCampeonato.title']}" />
+	</ui:define>
+
+	<ui:define name="principal">
+	
+	  <p:dataTable id="championship" var="champs" value="#{mbCampeonato.campeonatos}" 
+	  			   emptyMessage="#{msg['pages.listaCampeonato.empty']}">
+        <f:facet name="header">
+            <p:inputText id="search" />
+            <p:commandButton value="#{msg['pages.listaCampeonato.pesquisa']}" type="button"/>
+        </f:facet>      
+        
+        <p:column headerText="#{msg['pages.listaCampeonato.nome']}" >
+        	<p:outputLabel value="#{champs.nome}" />
+      	</p:column>
+        
+        <p:column headerText="#{msg['pages.listaCampeonato.data_inicio']}" >
+        	<p:outputLabel value="#{champs.data_inicio}" />
+      	</p:column>
+           
+        <p:column headerText="#{msg['pages.listaCampeonato.data_fim']}"  >
+        	<p:outputLabel value="#{champs.data_fim}" />
+      	</p:column>
+                  
+        <p:column headerText="#{msg['pages.listaCampeonato.data_insc_inicio']}" >
+        	<p:outputLabel value="#{champs.data_insc_inicio}" />
+      	</p:column>
+        
+        <p:column headerText="#{msg['pages.listaCampeonato.data_insc_fim']}" >
+        	<p:outputLabel value="#{champs.data_insc_fim}" />
+      	</p:column>
+        
+        <p:column headerText="#{msg['pages.listaCampeonato.jog_min']}" >
+        	<p:outputLabel value="#{champs.jogadores_min}" />
+      	</p:column>
+        
+        <p:column headerText="#{msg['pages.listaCampeonato.jog_max']}" >
+        	<p:outputLabel value="#{champs.jogadores_max}" />
+      	</p:column>
+      	
+        <p:column headerText="#{msg['pages.listaCampeonato.taxa_insc']}" >
+        	<p:outputLabel value="#{champs.taxa_insc}" />
+      	</p:column>
+        
+        <!-- <p:column width="150" headerText="#{msg['pages.listaCampeonato.aceitar']}">             
+        <p:selectBooleanCheckbox value=" "/>
+        </p:column> -->
+        
+    </p:dataTable>
+	 
+	</ui:define>
+</ui:composition>

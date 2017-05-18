@@ -1,5 +1,5 @@
 package sistema.modelos;
 
 public enum Papel {
-	ADMIN, DIRETOR, COMUM;
+	ADMIN, DIRETOR, COMUM, ORGANIZADOR, TECNICO, JUIZ;
 }

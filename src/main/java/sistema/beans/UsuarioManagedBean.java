@@ -17,9 +17,9 @@ public class UsuarioManagedBean {
 	public String salvar(){
 		service.salvar(usuario);
 		usuario = new Usuario();
-		return "inicio";
+		return "welcome";
 	}
-
+	
 	public List<Usuario> getUsuarios(){
 		return service.getUsuarios();
 	}

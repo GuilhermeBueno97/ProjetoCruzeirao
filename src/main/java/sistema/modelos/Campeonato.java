@@ -1,10 +1,29 @@
 package sistema.modelos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Campeonato {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="campeonatos")
+@NamedQuery(name = "Campeonato.pesquisarPorNome", query = "select u from Campeonato u where u.nome = :nome")
+public class Campeonato implements Serializable{
+	
+	private static final long serialVersionUID = -345530919306581961L;
+
+	public static final String PESQUISAR_POR_NOME = "Campeonato.pesquisarPorNome";
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id_campeonato;
+	
 	private String nome;
 	private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
 	private Date data_inicio;
@@ -74,5 +93,39 @@ public class Campeonato {
 	}
 	public void setJogadores_max(int jogadores_max) {
 		this.jogadores_max = jogadores_max;
+	}
+	
+	@Override
+	public String toString() {
+		return "Campeonato [id_campeonato=" + id_campeonato + ", nome=" + nome + ", categorias=" + categorias
+				+ ", data_inicio=" + data_inicio + ", data_fim=" + data_fim + ", data_insc_inicio=" + data_insc_inicio
+				+ ", data_insc_fim=" + data_insc_fim + ", taxa_insc=" + taxa_insc + ", jogadores_min=" + jogadores_min
+				+ ", jogadores_max=" + jogadores_max + "]";
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id_campeonato;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Campeonato other = (Campeonato) obj;
+		if (id_campeonato != other.id_campeonato)
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		return true;
 	}
 }

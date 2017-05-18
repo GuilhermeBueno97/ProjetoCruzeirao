@@ -19,26 +19,26 @@
 	  <h:form id="formCampeonato">	
 	  <p:panelGrid columns="2">          
       <p:outputLabel value="#{msg['pages.cadastroCampeonato.nome']}" /> 
-      <p:inputText/>
+      <p:inputText value="#{mbCampeonato.campeonato.nome}"/>
 	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.databegin']}" /> 
-	  <p:calendar id="button1" showOn="button" />
-	  <p:outputLabel  value="#{msg['pages.cadastroCampeonato.dataend']}" /> 
-	  <p:calendar id="button2" showOn="button" />
+	  <p:calendar id="button1" pattern="dd-MM-yyyy" showOn="button" value="#{mbCampeonato.campeonato.data_inicio}"/>
+	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataend']}" /> 
+	  <p:calendar id="button2" pattern="dd-MM-yyyy" showOn="button" value="#{mbCampeonato.campeonato.data_fim}"/>
 	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.inscbegin']}" />
-	  <p:calendar id="button3" showOn="button" />
+	  <p:calendar id="button3" pattern="dd-MM-yyyy" showOn="button" value="#{mbCampeonato.campeonato.data_insc_inicio}"/>
 	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.inscend']}" />
-	  <p:calendar id="button4" showOn="button" />
+	  <p:calendar id="button4" pattern="dd-MM-yyyy" showOn="button" value="#{mbCampeonato.campeonato.data_insc_fim}"/>
 	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.jogadores_min']}" /> 
-      <p:inputText/>
+      <p:inputText value="#{mbCampeonato.campeonato.jogadores_min}"/>
       <p:outputLabel value="#{msg['pages.cadastroCampeonato.jogadores_max']}" /> 
-      <p:inputText/>
+      <p:inputText value="#{mbCampeonato.campeonato.jogadores_max}"/>
 	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.taxa']}" />
-	   <p:spinner id="prefix" value="0" prefix="$" min="0" />
+	  <p:spinner id="prefix" value="#{mbCampeonato.campeonato.taxa_insc}" prefix="R$" min="0" />
                  
 	  </p:panelGrid>
 	  <p:commandButton value="#{msg['pages.cadastroCampeonato.btnSalvar']}"
 	                 update=":formCampeonato"
-	                 action="/pages/cadastroCategoria.xhtml?faces-redirect=true"
+	                 action="#{mbCampeonato.salvar}"
 	                 ajax="false"
 	                 />
 	                 </h:form>

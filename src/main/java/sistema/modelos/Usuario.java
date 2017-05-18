@@ -7,13 +7,14 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name="paunocu")
+@Table(name="users")
 @NamedQuery(name = "Usuario.pesquisarPorUsername", query = "select u from Usuario u where u.username = :username")
 public class Usuario extends Pessoa implements Serializable{
 	
@@ -22,29 +23,21 @@ public class Usuario extends Pessoa implements Serializable{
 	public static final String PESQUISAR_POR_USERNAME = "Usuario.pesquisarPorUsername";
 	
 	@Id
-	@GeneratedValue
-	@Column
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id_usuario;
 	
-	@Transient
+	//@Transient
 	private ArrayList<Papel> papeis = new ArrayList<Papel>();
 	
 	private String username;
 	private String senha;
 	private String email;
-	private String cpf;
 	
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getCpf() {
-		return cpf;
-	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
 	}
 	public int getId() {
 		return id_usuario;
@@ -82,7 +75,7 @@ public class Usuario extends Pessoa implements Serializable{
 	
 	@Override
 	public String toString(){
-		return "Usuario [id= " + id_usuario + ", nome= " + getNome() + ", CPF= " + cpf + ", Senha= " + senha;
+		return "Usuario [id= " + id_usuario + ", nome= " + getNome() + ", Senha= " + senha;
 	}
 	
 	@Override

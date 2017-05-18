@@ -57,7 +57,7 @@ private static UserDetailsService usuarioService = new UsuarioSistemaService();
 
         // Todas as requisições para partes internas da aplicação devem ser autenticadas
 		http.authorizeRequests().anyRequest().authenticated();
-        //http.antMatcher("/pages/cadastroUsuario.xhtml").anonymous();
+        //http.antMatcher("/pages/cadastroUsuario.xhtml").anonymous();	
     }
 
     @Override
