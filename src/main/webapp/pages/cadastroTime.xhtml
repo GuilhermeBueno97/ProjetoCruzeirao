@@ -20,12 +20,12 @@
 	  <p:panelGrid columns="2">
       <p:outputLabel value="#{msg['pages.cadastroTime.nome']}" />
       <p:inputText value="#{mbTime.time.nome}"/>
-	  
+	  <!-- 
 	  <p:outputLabel value="#{msg['pages.cadastroTime.diretor']}" />
-	  <p:selectOneMenu value="#{mbTime.time.diretor}" converter="usuarioConverter">
+	  <p:selectOneMenu value="#{mbUser.usuario}" converter="usuarioConverter">
 	  		 <f:selectItems value="#{mbUser.usuarios}" var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}"/>
 	  </p:selectOneMenu>
-	  
+	   -->
 	  </p:panelGrid>
 	  <p:commandButton value="#{msg['pages.cadastroTime.btnSalvar']}"
 	                 update=":formTime"

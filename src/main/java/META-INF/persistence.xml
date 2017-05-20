@@ -6,7 +6,7 @@
 	<class>sistema.modelos.Categoria</class>
 	<class>sistema.modelos.Time</class>
 	<properties>
-		<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample;create=true"/>
+		<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DBTeste;create=true"/>
 		<property name="javax.persistence.jdbc.user" value="user"/>
 		<property name="javax.persistence.jdbc.password" value="pwd"/>
 		<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>

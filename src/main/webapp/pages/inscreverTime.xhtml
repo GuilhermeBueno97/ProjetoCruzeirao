@@ -20,19 +20,16 @@
 	  <h:form id="formInscTime">	
 	  <p:panelGrid columns="2">
       <p:outputLabel for="camp" value="#{msg['pages.inscreverTime.campeonato']}" />
-        <p:selectOneMenu id="camp" style="width:125px">
+        <p:selectOneMenu id="camp" style="width:125px" value="#{mbCategoria.categoria.nome}">
             <f:selectItem itemLabel="#{msg['pages.inscreverTime.submenu']}" itemValue="" />
-            <f:selectItem itemLabel="Cruzeirão" itemValue="Cruzeirão" />
-            <f:selectItem itemLabel="Brasileirão" itemValue="Brasileirão" />
-            <f:selectItem itemLabel="Paulistão" itemValue="Paulistão" />
+	  		<f:selectItems value="#{mbCampeonato.campeonatos}" var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}"/>
+	  		<f:selectItems value="#{aux.categorias}" var="cat" itemValue="#{cat}" itemLabel="#{cat.nome}"/>
         </p:selectOneMenu>
         
         <p:outputLabel for="categ" value="#{msg['pages.inscreverTime.categoria']}" />
         <p:selectOneMenu id="categ" style="width:125px">
             <f:selectItem itemLabel="#{msg['pages.inscreverTime.submenu']}" itemValue="" />
-            <f:selectItem itemLabel="Infantil" itemValue="Infantil" />
-            <f:selectItem itemLabel="Adulto" itemValue="Adulto" />
-            <f:selectItem itemLabel="Veterano" itemValue="Veterano" />
+            <f:selectItems value="#{aux.categorias}" var="cat" itemValue="#{cat}" itemLabel="#{cat.nome}"/>
         </p:selectOneMenu>
 	  </p:panelGrid>
 	  <p:commandButton value="#{msg['pages.inscreverTime.btnSalvar']}"

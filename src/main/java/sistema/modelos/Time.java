@@ -1,6 +1,7 @@
 package sistema.modelos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,8 +29,7 @@ public class Time implements Serializable{
 	
 	private Usuario diretor;
 	
-	@Transient
-	private Inscricao inscricao;
+	private ArrayList<Inscricao> inscricoes = new ArrayList<Inscricao>();
 	
 	public String getNome() {
 		return nome;
@@ -49,15 +49,15 @@ public class Time implements Serializable{
 	public void setId_time(int id_time) {
 		this.id_time = id_time;
 	}
-	public Inscricao getInscricao() {
-		return inscricao;
+	public ArrayList<Inscricao> getInscricoes() {
+		return inscricoes;
 	}
-	public void setInscricao(Inscricao inscricao) {
-		this.inscricao = inscricao;
+	public void setInscricoes(ArrayList<Inscricao> inscricoes) {
+		this.inscricoes = inscricoes;
 	}
 	@Override
 	public String toString() {
-		return "Time [id_time=" + id_time + ", nome=" + nome + ", diretor=" + diretor + ", inscricao=" + inscricao
+		return "Time [id_time=" + id_time + ", nome=" + nome + ", diretor=" + diretor + ", inscricoes=" + inscricoes
 				+ "]";
 	}
 	@Override

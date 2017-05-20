@@ -12,7 +12,7 @@
     <h:form style="float:center" id="cadastro" prependId="false">
 	<div align="center">
     
-    	<p:panel id="pnl" header="Cadastrar Usuario" style="border-color:black;border-width:2px; border-style:solid; width:500px; margin-left:auto; margin-right:auto;">
+    	<p:panel id="pnl" header="Cadastrar Usuario" style="border-color:black;border-width:2px; border-style:solid; width:550px; margin-left:auto; margin-right:auto;">
         <p:messages id="messages" />
         <h:panelGrid columns="2" cellpadding="5" id="panel" style="margin:1%; text-align: center">
         
@@ -24,14 +24,20 @@
            
             <p:outputLabel size="30" value="Senha: *" />
             <p:inputText id="Senha" required="true" value="#{mbUser.usuario.senha}" label="Senha"/>
+         	
+            <p:outputLabel size="30" value="CPF: *" />
+            <p:inputText id="Cpf" required="true" value="#{mbUser.usuario.cpf}" label="Cpf"/> 
+            
+            <p:outputLabel size="30" value="RG: *" />
+            <p:inputText id="Rg" required="true" value="#{mbUser.usuario.rg}" label="Rg"/>
+            
+            <p:outputLabel for="mask" value="Data de Nascimento:" />
+        	<p:calendar id="mask" required="true" value="#{mbUser.usuario.data_nasc}" pattern="dd-MM-yyyy" mask="true" />
             
             <p:outputLabel size="30" value="Email: *" />
             <p:inputText id="Email" required="true" value="#{mbUser.usuario.email}" label="Email"/>
             
-            <p:outputLabel size="30" value="CPF: *" />
-            <p:inputText id="Cpf" required="true" value="#{mbUser.usuario.cpf}" label="Cpf"/>  
-            
-            <p:outputLabel for="func" value="Função:" />            
+            <p:outputLabel for="func" value="Função:" />
             <p:selectCheckboxMenu id="func" label="Funções" value="#{mbUser.usuario.papeis}">
 	            <f:selectItem itemLabel="Jogador" itemValue="Jogador"/>
 	            <f:selectItem itemLabel="Técnico" itemValue="Técnico"/>
@@ -39,8 +45,7 @@
 	            <f:selectItem itemLabel="Juiz" itemValue="Juiz"/>
 	            <f:selectItem itemLabel="Preparador Fisico" itemValue="Preparador Fisico"/>
 	            <f:selectItem itemLabel="Massagista" itemValue="Massagista"/>
-	            <f:selectItem itemLabel="Organizador" itemValue="Organizador"/>  
-	            <!-- <f:selectItems value="#{}"/> -->
+	            <f:selectItem itemLabel="Organizador" itemValue="Organizador"/>
             </p:selectCheckboxMenu>
             
         </h:panelGrid>

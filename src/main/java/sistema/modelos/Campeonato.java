@@ -49,8 +49,8 @@ public class Campeonato implements Serializable{
 	public ArrayList<Categoria> getCategorias() {
 		return categorias;
 	}
-	public void setCategorias(ArrayList<Categoria> categorias) {
-		this.categorias = categorias;
+	public void addCategorias(Categoria categoria) {
+		this.categorias.add(categoria);
 	}
 	public Date getData_inicio() {
 		return data_inicio;

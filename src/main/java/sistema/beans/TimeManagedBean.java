@@ -5,7 +5,9 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import sistema.dao.UsuarioDAO;
 import sistema.modelos.Time;
+import sistema.modelos.Usuario;
 import sistema.service.TimeService;
 
 @ManagedBean(name="mbTime")
@@ -13,10 +15,15 @@ import sistema.service.TimeService;
 public class TimeManagedBean {
 	private Time time = new Time();
 	private TimeService service = new TimeService();
+	private Usuario usuarioAtual = new Usuario();
+	private UsuarioDAO user = new UsuarioDAO();
 	
 	public String salvar(){
+		usuarioAtual = user.pesquisarPorUsername(usuarioAtual.getUserAtual());
+		time.setDiretor(usuarioAtual);
 		service.salvar(time);
 		time = new Time();
+		
 		return "inicio";
 	}
 
