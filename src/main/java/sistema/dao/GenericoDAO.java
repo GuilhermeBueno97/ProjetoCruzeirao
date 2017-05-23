@@ -11,7 +11,6 @@ import javax.persistence.Query;
 public abstract class GenericoDAO<T> {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Class<T> classeEntidade;
 	
 	public GenericoDAO(){
 		if(emf == null)

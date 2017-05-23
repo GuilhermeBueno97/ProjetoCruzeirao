@@ -28,8 +28,13 @@ public class Categoria implements Serializable{
 	private char sexo;
 	private boolean insc_jogadores;
 	private ArrayList<Time> times = new ArrayList<Time>();
-	private ArrayList<Jogo> partidas = new ArrayList<Jogo>();
 	
+	public ArrayList<Time> getTimes() {
+		return times;
+	}
+	public void addTimes(Time time) {
+		this.times.add(time);
+	}
 	public int getId() {
 		return id_categoria;
 	}
@@ -60,23 +65,10 @@ public class Categoria implements Serializable{
 	public void setInsc_jogadores(boolean insc_jogadores) {
 		this.insc_jogadores = insc_jogadores;
 	}
-	public ArrayList<Time> getTimes() {
-		return times;
-	}
-	public void setTimes(ArrayList<Time> times) {
-		this.times = times;
-	}
-	public ArrayList<Jogo> getPartidas() {
-		return partidas;
-	}
-	public void setPartidas(ArrayList<Jogo> partidas) {
-		this.partidas = partidas;
-	}
 	@Override
 	public String toString() {
 		return "Categoria [id_categoria=" + id_categoria + ", nome=" + nome + ", idade_min=" + idade_min + ", sexo="
-				+ sexo + ", insc_jogadores=" + insc_jogadores + ", times=" + times
-				+ ", partidas=" + partidas + "]";
+				+ sexo + ", insc_jogadores=" + insc_jogadores + "]";
 	}
 	@Override
 	public int hashCode() {

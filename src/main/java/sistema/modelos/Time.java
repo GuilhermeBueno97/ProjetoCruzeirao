@@ -7,10 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name="times")
@@ -52,8 +50,8 @@ public class Time implements Serializable{
 	public ArrayList<Inscricao> getInscricoes() {
 		return inscricoes;
 	}
-	public void setInscricoes(ArrayList<Inscricao> inscricoes) {
-		this.inscricoes = inscricoes;
+	public void addInscricao(Inscricao inscricao) {
+		this.inscricoes.add(inscricao);
 	}
 	@Override
 	public String toString() {

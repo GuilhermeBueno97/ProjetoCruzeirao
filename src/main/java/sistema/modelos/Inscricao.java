@@ -1,20 +1,53 @@
 package sistema.modelos;
 
 import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="inscricoes")
 public class Inscricao {
-	private int id_inscricao;
-	private ArrayList<Usuario> jogadores = new ArrayList<Usuario>();
-	private Campeonato campeonato;
-	private Usuario tecnico;
-	private Usuario preparador_fisico;
-	private Usuario massagista;
-	private boolean pagamento;
 	
-	public int getId() {
+	@Id
+	private int id_inscricao;
+	
+	private ArrayList<Usuario> jogadores = new ArrayList<Usuario>();
+	private Time time;
+	private Categoria categoria;
+	private Usuario tecnico;
+	private boolean pagamento;
+	private boolean validada;
+	private ArrayList<Jogo> partidas = new ArrayList<Jogo>();
+	
+	public Time getTime() {
+		return time;
+	}
+	public void setTime(Time time) {
+		this.time = time;
+	}
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+	public ArrayList<Jogo> getPartidas() {
+		return partidas;
+	}
+	public void setPartidas(ArrayList<Jogo> partidas) {
+		this.partidas = partidas;
+	}
+	public boolean isValidada() {
+		return validada;
+	}
+	public void setValidada(boolean validada) {
+		this.validada = validada;
+	}
+	public int getId_inscricao() {
 		return id_inscricao;
 	}
-	public void setId(int id) {
+	public void setId_inscricao(int id) {
 		this.id_inscricao = id;
 	}
 	public ArrayList<Usuario> getJogadores() {
@@ -23,31 +56,13 @@ public class Inscricao {
 	public void setJogadores(ArrayList<Usuario> jogadores) {
 		this.jogadores = jogadores;
 	}
-	public Campeonato getCampeonato() {
-		return campeonato;
-	}
-	public void setCampeonato(Campeonato campeonato) {
-		this.campeonato = campeonato;
-	}
 	public Usuario getTecnico() {
 		return tecnico;
 	}
 	public void setTecnico(Usuario tecnico) {
 		this.tecnico = tecnico;
 	}
-	public Usuario getPreparador_fisico() {
-		return preparador_fisico;
-	}
-	public void setPreparador_fisico(Usuario preparador_fisico) {
-		this.preparador_fisico = preparador_fisico;
-	}
-	public Usuario getMassagista() {
-		return massagista;
-	}
-	public void setMassagista(Usuario massagista) {
-		this.massagista = massagista;
-	}
-	public boolean isPagamento() {
+	public boolean getPagamento() {
 		return pagamento;
 	}
 	public void setPagamento(boolean pagamento) {

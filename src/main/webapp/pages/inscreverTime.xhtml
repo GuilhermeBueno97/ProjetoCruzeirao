@@ -20,22 +20,30 @@
 	  <h:form id="formInscTime">	
 	  <p:panelGrid columns="2">
       <p:outputLabel for="camp" value="#{msg['pages.inscreverTime.campeonato']}" />
-        <p:selectOneMenu id="camp" style="width:125px" value="#{mbInsc.campAtual}">
+        
+        <p:selectOneMenu id="camp" style="width:125px" value="#{mbInsc.campAtual}" converter="campConverter">
             <f:selectItem itemLabel="#{msg['pages.inscreverTime.submenu']}" itemValue="" />
 	  		<f:selectItems value="#{mbInsc.campeonatos}" var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}"/>
-	  		<f:ajax render="categ"/>
-	  		<!--<f:selectItems value="#{aux.categorias}" var="cat" itemValue="#{cat}" itemLabel="#{cat.nome}"/> -->
+	  		<p:ajax listener="#{mbInsc.updateCategories}" event="change" update="formInscTime" process="camp"/>
         </p:selectOneMenu>
         
         <p:outputLabel for="categ" value="#{msg['pages.inscreverTime.categoria']}" />
-        <p:selectOneMenu id="categ" style="width:125px" value="#{mbInsc.catAtual}">
+        
+        <p:selectOneMenu id="categ" style="width:125px" value="#{mbInsc.catAtual}" converter="catConverter">
             <f:selectItem itemLabel="#{msg['pages.inscreverTime.submenu']}" itemValue="" />
             <f:selectItems value="#{mbInsc.categorias}" var="cat" itemValue="#{cat}" itemLabel="#{cat.nome}"/>
+        </p:selectOneMenu>
+        
+        <p:outputLabel for="time" value="#{msg['pages.inscreverTime.time']}" />
+        
+        <p:selectOneMenu id="time" style="width:125px" value="#{mbInsc.timeAtual}" converter="timeConverter">
+            <f:selectItem itemLabel="#{msg['pages.inscreverTime.submenu']}" itemValue="" />
+            <f:selectItems value="#{mbInsc.times}" var="time" itemValue="#{time}" itemLabel="#{time.nome}"/>
         </p:selectOneMenu>
 	  </p:panelGrid>
 	  <p:commandButton value="#{msg['pages.inscreverTime.btnSalvar']}"
 	                 update=":formInscTime"
-	                 action="/pages/listarJogadores.xhtml?faces-redirect=true"
+	                 action="#{mbInsc.salvar}"
 	                 />
        </h:form>
        </p:panel>

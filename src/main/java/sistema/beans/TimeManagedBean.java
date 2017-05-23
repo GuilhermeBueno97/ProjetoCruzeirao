@@ -38,4 +38,8 @@ public class TimeManagedBean {
 	public void setTime(Time time) {
 		this.time = time;
 	}
+	
+	public void remove(Time time) {
+		service.remove(time);
+	}
 }

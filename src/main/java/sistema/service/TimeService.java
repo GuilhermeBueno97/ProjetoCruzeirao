@@ -23,6 +23,16 @@ public class TimeService {
 		em.close();
 	}
 	
+	public void remove(Time time) {
+		EntityManager em = emf.createEntityManager();
+		
+		em.getTransaction().begin();
+			Time time2 = em.merge(time);
+			em.remove(time2);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Time> getTimes(){
 		List<Time> times;

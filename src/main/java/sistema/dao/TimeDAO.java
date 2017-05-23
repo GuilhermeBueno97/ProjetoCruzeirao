@@ -2,7 +2,6 @@ package sistema.dao;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import sistema.modelos.Time;
 
 public class TimeDAO extends GenericoDAO<Time>{
