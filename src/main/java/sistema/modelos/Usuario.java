@@ -10,11 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name="users")
@@ -140,12 +138,16 @@ public class Usuario implements Serializable{
 		return true;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "Usuario [id_usuario=" + id_usuario + ", papeis=" + papeis + ", nome=" + nome + ", cpf=" + cpf
 				+ ", username=" + username + ", senha=" + senha + ", email=" + email + "]";
-	}
+	}*/
 	
+	@Override
+	public String toString() {
+		return nome;
+	}
 	public String getUserAtual(){
 		return (((SecurityContext) SecurityContextHolder.getContext()).getAuthentication().getName());
 	}

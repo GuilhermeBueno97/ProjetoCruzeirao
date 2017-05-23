@@ -17,9 +17,9 @@
 	
 	    <p:growl id="growl" showDetail="true" />
 	
-		<p:dataTable value="#{mbTime.times}" var="t"
+		<p:dataTable value="#{mbInsc.allTimes}" var="t"
 			id="tableTimes"
-			selectionMode="single" selection="#{mbTime.time}" rowKey="#{t.id_time}"
+			selectionMode="single" selection="#{mbInsc.timeAtual}" rowKey="#{t.id_time}"
 			>
 
 		   <p:ajax event="rowSelect" />
@@ -28,7 +28,15 @@
 			<p:column headerText="#{msg['pages.autorizaInsc.nomeTime']}">
 				<h:outputText value="#{t.nome}" />
 			</p:column>
-
+			
+			<p:column headerText="#{msg['pages.autorizaInsc.diretor']}">
+				<h:outputText value="#{t.diretor}" />
+			</p:column>
+			
+			<p:column headerText="#{msg['pages.autorizaInsc.nomeCategoria']}">
+				<h:outputText value="#{t.inscricoes}" />
+			</p:column>
+			
 			<p:column style="width:100px" headerText="#{msg['pages.autorizaInsc.autorizar']}">
 					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
 						style="text-align:center"

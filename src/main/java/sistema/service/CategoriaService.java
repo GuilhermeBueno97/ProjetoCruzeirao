@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import sistema.modelos.Categoria;
+import sistema.modelos.Time;
 
 public class CategoriaService {
 	private EntityManagerFactory emf;
@@ -33,4 +34,16 @@ public class CategoriaService {
 		em.close();
 		return categorias; 
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Time> getTimes(){
+		List<Time> times;
+		
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("Select times From Categoria u");
+		times = q.getResultList();
+		em.close();
+		return times; 
+	}
+	
 }

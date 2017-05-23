@@ -28,11 +28,15 @@
 			<p:column headerText="#{msg['pages.confirmarPagamento.nomeTime']}">
 				<h:outputText value="#{at.nome}" />
 			</p:column>
+			
+			<p:column headerText="#{msg['pages.confirmarPagamento.nomeTime']}">
+				<h:outputText value="#{at.inscricoes}" />
+			</p:column>
 
 			<p:column style="width:100px" headerText="#{msg['pages.confirmarPagamento.confirmar']}">
-					<p:commandLink id="confirmar" styleClass="ui-icon ui-icon-trash"
+					<p:commandLink id="confirmar" styleClass="ui-icon ui-icon-check"
 						style="text-align:center"
-						actionListener="#{mbTime.setPagamento(at)}"
+						actionListener="#{mbCategoria.setPagamento(at)}"
 						update=":formTableConfirmPag" />
 			</p:column>
 

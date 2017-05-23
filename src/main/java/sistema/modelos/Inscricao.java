@@ -1,15 +1,24 @@
 package sistema.modelos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="inscricoes")
-public class Inscricao {
+@NamedQuery(name = "Inscricao.pesquisarPorNome", query = "select u from Inscricao u where u.time.nome = :nome")
+public class Inscricao implements Serializable{
+	
+	private static final long serialVersionUID = 3043991500968640285L;
+	public static final String PESQUISAR_POR_NOME = "Inscricao.pesquisarPorNome";
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id_inscricao;
 	
 	private ArrayList<Usuario> jogadores = new ArrayList<Usuario>();
@@ -35,8 +44,8 @@ public class Inscricao {
 	public ArrayList<Jogo> getPartidas() {
 		return partidas;
 	}
-	public void setPartidas(ArrayList<Jogo> partidas) {
-		this.partidas = partidas;
+	public void addPartidas(Jogo jogo) {
+		this.partidas.add(jogo);
 	}
 	public boolean isValidada() {
 		return validada;

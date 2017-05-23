@@ -38,8 +38,14 @@
         
         <p:selectOneMenu id="time" style="width:125px" value="#{mbInsc.timeAtual}" converter="timeConverter">
             <f:selectItem itemLabel="#{msg['pages.inscreverTime.submenu']}" itemValue="" />
-            <f:selectItems value="#{mbInsc.times}" var="time" itemValue="#{time}" itemLabel="#{time.nome}"/>
+            <f:selectItems value="#{mbInsc.timesUsuarioAtual}" var="time" itemValue="#{time}" itemLabel="#{time.nome}"/>
         </p:selectOneMenu>
+        
+        <h:outputLabel for="users" value="#{msg['pages.inscreverTime.players']}:" />
+        
+        <p:selectCheckboxMenu id="users" style="width:150px" value="#{mbInsc.usuariosList}" label="Select One" converter="userConverter" multiple="true">
+            <f:selectItems value="#{mbInsc.usuarios}" var="user" itemValue="#{user}" itemLabel="#{user.nome}"/>
+        </p:selectCheckboxMenu>
 	  </p:panelGrid>
 	  <p:commandButton value="#{msg['pages.inscreverTime.btnSalvar']}"
 	                 update=":formInscTime"

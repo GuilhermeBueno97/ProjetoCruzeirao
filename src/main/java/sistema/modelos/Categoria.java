@@ -23,12 +23,19 @@ public class Categoria implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id_categoria;
 	
+	private Campeonato campeonato;
 	private String nome;
 	private int idade_min;
 	private char sexo;
 	private boolean insc_jogadores;
 	private ArrayList<Time> times = new ArrayList<Time>();
 	
+	public Campeonato getCampeonato() {
+		return campeonato;
+	}
+	public void setCampeonato(Campeonato campeonato) {
+		this.campeonato = campeonato;
+	}
 	public ArrayList<Time> getTimes() {
 		return times;
 	}
@@ -65,10 +72,14 @@ public class Categoria implements Serializable{
 	public void setInsc_jogadores(boolean insc_jogadores) {
 		this.insc_jogadores = insc_jogadores;
 	}
-	@Override
+	/*@Override
 	public String toString() {
 		return "Categoria [id_categoria=" + id_categoria + ", nome=" + nome + ", idade_min=" + idade_min + ", sexo="
 				+ sexo + ", insc_jogadores=" + insc_jogadores + "]";
+	}*/
+	
+	public String toString() {
+		return nome;
 	}
 	@Override
 	public int hashCode() {

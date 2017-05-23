@@ -5,7 +5,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-
 import sistema.modelos.Time;
 
 public class TimeService {
@@ -31,6 +30,19 @@ public class TimeService {
 			em.remove(time2);
 		em.getTransaction().commit();
 		em.close();
+	}
+	
+	public Time salvarEditado(Time t) {
+
+		Time time = null;
+		EntityManager em = emf.createEntityManager();
+		
+		em.getTransaction().begin();
+			time = em.merge(t);
+		em.getTransaction().commit();
+		em.close();
+		
+		return time;
 	}
 	
 	@SuppressWarnings("unchecked")

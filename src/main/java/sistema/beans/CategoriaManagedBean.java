@@ -7,8 +7,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import sistema.modelos.Categoria;
+import sistema.modelos.Inscricao;
 import sistema.modelos.Time;
 import sistema.service.CategoriaService;
+import sistema.service.InscricaoService;
 
 @ManagedBean(name="mbCategoria")
 @SessionScoped
@@ -16,6 +18,8 @@ public class CategoriaManagedBean {
 	private Categoria categoria = new Categoria();
 	private CategoriaService service = new CategoriaService();
 	private Time time = new Time();
+	private Inscricao inscricao = new Inscricao();
+	private InscricaoService inscService = new InscricaoService();
 	
 	public Time getTime() {
 		return time;
@@ -63,6 +67,9 @@ public class CategoriaManagedBean {
 	
 	public void setPagamento(Time t)
 	{
+		inscricao.setPagamento(true);
+		
+		t.addInscricao(inscricao);
 		
 	}
 }
