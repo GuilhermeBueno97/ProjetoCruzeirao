@@ -29,6 +29,12 @@ public class Inscricao implements Serializable{
 	private boolean validada;
 	private ArrayList<Jogo> partidas = new ArrayList<Jogo>();
 	
+	public Inscricao()
+	{
+		pagamento = false;
+		validada = false;
+	}
+	
 	public Time getTime() {
 		return time;
 	}

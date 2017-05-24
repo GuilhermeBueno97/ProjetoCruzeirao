@@ -34,20 +34,20 @@
 			</p:column>
 			
 			<p:column headerText="#{msg['pages.autorizaInsc.nomeCategoria']}">
-				<h:outputText value="#{t.inscricoes}" />
+				<h:outputText value="#{t.inscricoes}"/>
 			</p:column>
 			
 			<p:column style="width:100px" headerText="#{msg['pages.autorizaInsc.autorizar']}">
 					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
 						style="text-align:center"
-						actionListener="#{mbTime.remove(t)}"
+						actionListener="#{mbInsc.remove(t)}"
 						update=":formTableTimes" />
 			</p:column>
 
 		</p:dataTable>
 		
 		<p:commandButton value="#{msg['pages.autorizaInsc.btnSalvar']}"
-	                 action="/pages/inicio.xhtml"
+	                 action="#{mbInsc.salvarAutorizados}"
 	                 ajax="false"
 	                 />	 
 	</h:form>

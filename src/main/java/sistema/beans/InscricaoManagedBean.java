@@ -1,11 +1,12 @@
 package sistema.beans;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.model.DataModel;
 
 import sistema.dao.UsuarioDAO;
 import sistema.modelos.Campeonato;
@@ -14,7 +15,6 @@ import sistema.modelos.Inscricao;
 import sistema.modelos.Time;
 import sistema.modelos.Usuario;
 import sistema.service.CampeonatoService;
-import sistema.service.CategoriaService;
 import sistema.service.InscricaoService;
 import sistema.service.TimeService;
 import sistema.service.UsuarioService;
@@ -36,7 +36,6 @@ public class InscricaoManagedBean {
 	private InscricaoService inscService = new InscricaoService();
 	private UsuarioService userService = new UsuarioService();
 	private ArrayList<Usuario> usuariosList = new ArrayList<Usuario>();
-	private CategoriaService catService = new CategoriaService();
 	
 	public String salvar(){
 		inscricao.setTime(timeAtual);
@@ -112,6 +111,32 @@ public class InscricaoManagedBean {
 		return times;
 	}
 	
+	public List<Time> getAllTimes()
+	{
+		List<Time> times = timeService.getTimes();
+		HashSet<Time> timesNaoInscritos = new HashSet<Time>();
+		List<Time> listaTimes = new ArrayList<Time>();
+		
+		for(Time t : times)
+		{
+			for(Inscricao i : t.getInscricoes())
+			{
+				if(!i.isValidada())
+				{
+					timesNaoInscritos.add(i.getTime());
+				}
+			}
+		}
+		
+		Iterator<Time> i = timesNaoInscritos.iterator();
+		
+		while(i.hasNext())
+		{
+			listaTimes.add(i.next());
+		}
+		return listaTimes;
+	}
+	
 	public void updateCategories()
 	{
 		categorias = campAtual.getCategorias();
@@ -119,5 +144,26 @@ public class InscricaoManagedBean {
 	
 	public List<Usuario> getUsuarios(){
 		return userService.getUsuarios();
+	}
+	
+	public String salvarAutorizados()
+	{
+		
+		
+		return "inicio";
+	}
+	
+	public void remove(Time time) {
+		for(Inscricao i : time.getInscricoes())
+		{
+			if(i.getTime() == time)
+			{
+				time.getInscricoes().remove(i);
+				//i.setCategoria(null);
+				//i.setTecnico(null);
+				//i.setTime(null);
+				inscService.remove(i);
+			}
+		}
 	}
 }

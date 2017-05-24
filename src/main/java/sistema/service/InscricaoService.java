@@ -23,6 +23,16 @@ public class InscricaoService {
 		em.close();
 	}
 	
+	public void remove(Inscricao insc) {
+		EntityManager em = emf.createEntityManager();
+		
+		em.getTransaction().begin();
+			Inscricao insc2 = em.merge(insc);
+			em.remove(insc2);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Inscricao> getInscricoes(){
 		List<Inscricao> inscricoes;
