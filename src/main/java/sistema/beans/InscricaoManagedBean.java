@@ -121,7 +121,7 @@ public class InscricaoManagedBean {
 		{
 			for(Inscricao i : t.getInscricoes())
 			{
-				if(!i.isValidada())
+				if(!i.isValidada() && !i.getPagamento())
 				{
 					timesNaoInscritos.add(i.getTime());
 				}
@@ -137,6 +137,21 @@ public class InscricaoManagedBean {
 		return listaTimes;
 	}
 	
+
+	public List<Inscricao> getInscricoesValidadas(){
+		List<Inscricao> inscricoes = new ArrayList<Inscricao>();
+		
+		for(Inscricao i : inscService.getInscricoes())
+		{
+			if(i.isValidada() && i.getPagamento())
+			{
+				inscricoes.add(i);
+			}
+		}
+		
+		return inscricoes;
+	}
+	
 	public void updateCategories()
 	{
 		categorias = campAtual.getCategorias();
@@ -146,24 +161,34 @@ public class InscricaoManagedBean {
 		return userService.getUsuarios();
 	}
 	
-	public String salvarAutorizados()
-	{
-		
-		
-		return "inicio";
-	}
-	
 	public void remove(Time time) {
+		Inscricao insc = null;
+		
 		for(Inscricao i : time.getInscricoes())
 		{
 			if(i.getTime() == time)
 			{
-				time.getInscricoes().remove(i);
-				//i.setCategoria(null);
-				//i.setTecnico(null);
-				//i.setTime(null);
-				inscService.remove(i);
+				insc = i;
 			}
 		}
+		time.getInscricoes().remove(insc);
+		timeService.salvarEditado(time);
+		inscService.remove(insc);
+	}
+	
+	public void autorizar(Time time) {
+		Inscricao insc = null;
+		
+		for(Inscricao i : time.getInscricoes())
+		{
+			if(i.getTime() == time)
+			{
+				insc = i;
+			}
+		}
+		insc.setPagamento(true);
+		insc.setValidada(true);
+		
+		inscService.salvarEditado(insc);
 	}
 }

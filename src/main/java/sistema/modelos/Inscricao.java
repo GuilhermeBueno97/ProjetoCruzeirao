@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import sistema.service.CampeonatoService;
 
 @Entity
 @Table(name="inscricoes")
@@ -28,6 +31,24 @@ public class Inscricao implements Serializable{
 	private boolean pagamento;
 	private boolean validada;
 	private ArrayList<Jogo> partidas = new ArrayList<Jogo>();
+	
+	@Transient
+	CampeonatoService campService = new CampeonatoService();
+	
+	public Campeonato getCampeonato(){
+		
+		for(Campeonato c : campService.getCampeonatos())
+		{
+			for(Categoria cat : c.getCategorias())
+			{
+				if(cat.equals(categoria))
+				{
+					return c;
+				}
+			}
+		}
+		return null;
+	}
 	
 	public Inscricao()
 	{

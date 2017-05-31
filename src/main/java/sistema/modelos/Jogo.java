@@ -1,5 +1,6 @@
 package sistema.modelos;
 
+
 import java.util.Date;
 
 public class Jogo {
@@ -11,6 +12,7 @@ public class Jogo {
 	private Relatorio relatorio;
 	private Jogo prox_jogo;
 	
+
 	public Date getData() {
 		return data;
 	}

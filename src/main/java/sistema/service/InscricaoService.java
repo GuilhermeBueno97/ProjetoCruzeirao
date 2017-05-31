@@ -33,6 +33,19 @@ public class InscricaoService {
 		em.close();
 	}
 	
+	public Inscricao salvarEditado(Inscricao i) {
+
+		Inscricao insc = null;
+		EntityManager em = emf.createEntityManager();
+		
+		em.getTransaction().begin();
+			insc = em.merge(i);
+		em.getTransaction().commit();
+		em.close();
+		
+		return insc;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Inscricao> getInscricoes(){
 		List<Inscricao> inscricoes;

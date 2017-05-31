@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="campeonatos")
 @NamedQuery(name = "Campeonato.pesquisarPorNome", query = "select u from Campeonato u where u.nome = :nome")
@@ -52,6 +53,7 @@ public class Campeonato implements Serializable{
 	public void addCategorias(Categoria categoria) {
 		this.categorias.add(categoria);
 	}
+	
 	public Date getData_inicio() {
 		return data_inicio;
 	}
@@ -97,11 +99,9 @@ public class Campeonato implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Campeonato [id_campeonato=" + id_campeonato + ", nome=" + nome + ", categorias=" + categorias
-				+ ", data_inicio=" + data_inicio + ", data_fim=" + data_fim + ", data_insc_inicio=" + data_insc_inicio
-				+ ", data_insc_fim=" + data_insc_fim + ", taxa_insc=" + taxa_insc + ", jogadores_min=" + jogadores_min
-				+ ", jogadores_max=" + jogadores_max + "]";
+		return nome;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

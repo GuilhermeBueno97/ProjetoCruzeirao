@@ -15,15 +15,8 @@
 	
 	 <h:form id="formTableConfirmPag">
 	
-	    <p:growl id="growl" showDetail="true" />
-	
 		<p:dataTable value="#{mbCategoria.allTeams}" var="at"
-			id="tableConfirmPag"
-			selectionMode="single" selection="#{mbCategoria.time}" rowKey="#{at.id_time}"
-			>
-
-		   <p:ajax event="rowSelect" />
-           <p:ajax event="rowUnselect" />
+			id="tableConfirmPag">
 
 			<p:column headerText="#{msg['pages.confirmarPagamento.nomeTime']}">
 				<h:outputText value="#{at.nome}" />

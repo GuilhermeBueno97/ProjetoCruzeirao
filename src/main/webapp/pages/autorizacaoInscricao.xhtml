@@ -15,16 +15,9 @@
 	
 	 <h:form id="formTableTimes">
 	
-	    <p:growl id="growl" showDetail="true" />
-	
 		<p:dataTable value="#{mbInsc.allTimes}" var="t"
-			id="tableTimes"
-			selectionMode="single" selection="#{mbInsc.timeAtual}" rowKey="#{t.id_time}"
-			>
-
-		   <p:ajax event="rowSelect" />
-           <p:ajax event="rowUnselect" />
-
+			id="tableTimes">
+			
 			<p:column headerText="#{msg['pages.autorizaInsc.nomeTime']}">
 				<h:outputText value="#{t.nome}" />
 			</p:column>
@@ -41,6 +34,13 @@
 					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
 						style="text-align:center"
 						actionListener="#{mbInsc.remove(t)}"
+						update=":formTableTimes" />
+			</p:column>
+			
+			<p:column style="width:100px" headerText="#{msg['pages.autorizaInsc.confirmar']}">
+					<p:commandLink id="confirmar" styleClass="ui-icon ui-icon-check"
+						style="text-align:center"
+						actionListener="#{mbInsc.autorizar(t)}"
 						update=":formTableTimes" />
 			</p:column>
 

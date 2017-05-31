@@ -1,5 +1,7 @@
 package sistema.beans;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -30,5 +32,11 @@ public class UsuarioManagedBean {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+	
+	public Calendar toCalendar(Date date){ 
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		return cal;
 	}
 }

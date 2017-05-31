@@ -12,26 +12,22 @@
 
 	<ui:define name="principal">
 	
-	  <p:dataTable id="inscricoes" var="insc" value="#{mbInsc.inscricoes}" 
+	  <p:dataTable id="inscricoes" var="insc" value="#{mbInsc.inscricoesValidadas}" 
 	  			   emptyMessage="#{msg['pages.listaInscricoes.empty']}">
-        <f:facet name="header">
-            <p:inputText id="search" />
-            <p:commandButton value="#{msg['pages.listaInscricoes.pesquisa']}" type="button"/>
-        </f:facet>
         
         <p:column headerText="#{msg['pages.listaInscricoes.nome']}" >
         	<p:outputLabel value="#{insc.time.nome}" />
       	</p:column>
         
-        <p:column headerText="#{msg['pages.listaInscricoes.categorias']}" >
-        	<p:outputLabel value="#{insc.categoria.campeonato.nome}" />
+        <p:column headerText="#{msg['pages.listaInscricoes.campeonato']}" >
+        	<p:outputLabel value="#{insc.campeonato}" />
       	</p:column>
         
-        <p:column headerText="#{msg['pages.listaInscricoes.categorias']}" >
+        <p:column headerText="#{msg['pages.listaInscricoes.categoria']}" >
         	<p:outputLabel value="#{insc.categoria.nome}" />
       	</p:column>
         
-        <p:column headerText="#{msg['pages.listaInscricoes.categorias']}" >
+        <p:column headerText="#{msg['pages.listaInscricoes.jogadores']}" >
         	<p:outputLabel value="#{insc.jogadores}" />
       	</p:column>
     </p:dataTable>
