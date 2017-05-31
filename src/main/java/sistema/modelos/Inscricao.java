@@ -6,7 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -25,11 +27,18 @@ public class Inscricao implements Serializable{
 	private int id_inscricao;
 	
 	private ArrayList<Usuario> jogadores = new ArrayList<Usuario>();
+	
+	@ManyToOne
 	private Time time;
+	
+	@ManyToOne
 	private Categoria categoria;
+	
 	private Usuario tecnico;
 	private boolean pagamento;
 	private boolean validada;
+	
+	@OneToMany(mappedBy="timeA")
 	private ArrayList<Jogo> partidas = new ArrayList<Jogo>();
 	
 	@Transient

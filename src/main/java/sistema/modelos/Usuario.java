@@ -51,6 +51,8 @@ public class Usuario implements Serializable{
 	}
 
 	public void setPapeis(ArrayList<Papel> papeis) {
+		//Papel papel = Papel.ADMIN;
+		//papeis.add(papel);
 		this.papeis = papeis;
 	}
 

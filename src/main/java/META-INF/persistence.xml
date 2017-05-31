@@ -6,6 +6,8 @@
 	<class>sistema.modelos.Categoria</class>
 	<class>sistema.modelos.Time</class>
 	<class>sistema.modelos.Inscricao</class>
+	<class>sistema.modelos.Local</class>
+	<class>sistema.modelos.Jogo</class>
 	<properties>
 		<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DBTeste;create=true"/>
 		<property name="javax.persistence.jdbc.user" value="user"/>

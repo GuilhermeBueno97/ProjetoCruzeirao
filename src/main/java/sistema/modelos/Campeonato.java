@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -26,7 +27,10 @@ public class Campeonato implements Serializable{
 	private int id_campeonato;
 	
 	private String nome;
+	
+	@OneToMany(mappedBy="campeonato")
 	private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+	
 	private Date data_inicio;
 	private Date data_fim;
 	private Date data_insc_inicio;

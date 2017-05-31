@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,24 +25,24 @@ public class Categoria implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id_categoria;
 	
+	@ManyToOne
 	private Campeonato campeonato;
+	
 	private String nome;
 	private int idade_min;
 	private char sexo;
 	private boolean insc_jogadores;
-	private ArrayList<Time> times = new ArrayList<Time>();
+	
+	//private ArrayList<Time> times = new ArrayList<Time>();
+	
+	@OneToMany(mappedBy="categoria")
+	private ArrayList<Inscricao> inscricoes = new ArrayList<Inscricao>();
 	
 	public Campeonato getCampeonato() {
 		return campeonato;
 	}
 	public void setCampeonato(Campeonato campeonato) {
 		this.campeonato = campeonato;
-	}
-	public ArrayList<Time> getTimes() {
-		return times;
-	}
-	public void addTimes(Time time) {
-		this.times.add(time);
 	}
 	public int getId() {
 		return id_categoria;
@@ -106,5 +108,11 @@ public class Categoria implements Serializable{
 		} else if (!nome.equals(other.nome))
 			return false;
 		return true;
+	}
+	public ArrayList<Inscricao> getInscricoes() {
+		return inscricoes;
+	}
+	public void setInscricoes(ArrayList<Inscricao> inscricoes) {
+		this.inscricoes = inscricoes;
 	}
 }

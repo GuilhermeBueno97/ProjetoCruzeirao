@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +28,7 @@ public class Time implements Serializable{
 	
 	private Usuario diretor;
 	
+	@OneToMany(mappedBy="time")
 	private ArrayList<Inscricao> inscricoes = new ArrayList<Inscricao>();
 	
 	public String getNome() {
