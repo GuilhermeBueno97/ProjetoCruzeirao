@@ -11,6 +11,7 @@ import sistema.modelos.Inscricao;
 import sistema.modelos.Time;
 import sistema.service.CategoriaService;
 import sistema.service.InscricaoService;
+import sistema.service.TimeService;
 
 @ManagedBean(name="mbCategoria")
 @SessionScoped
@@ -34,6 +35,10 @@ public class CategoriaManagedBean {
 		categoria = new Categoria();
 		return "inicio";
 	}
+	
+	public ArrayList<Inscricao> getInscricoes(){
+		return time.getInscricoes();
+	}
 
 	public List<Categoria> getCategorias(){
 		return service.getCategorias();
@@ -48,21 +53,14 @@ public class CategoriaManagedBean {
 	}
 	
 	public ArrayList<Time> getAllTeams(){
-		List<Categoria> list = service.getCategorias();
-		ArrayList<Time> allTeams = new ArrayList<Time>();
-		for(Categoria cat : list)
-		{
-			ArrayList<Time> times = new ArrayList<Time>();
-			
-			times = cat.getTimes();
-			
-			for(Time team : times)
-			{
-				allTeams.add(team);
-			}
-		}
 		
-		return allTeams;
+		TimeService ts = new TimeService();
+		List<Time> times = ts.getTimes();
+		ArrayList<Time> times2 = new ArrayList<Time>();
+		times2.addAll(times);
+			
+		
+		return times2;
 	}
 	
 	public void setPagamento(Time t)
