@@ -5,9 +5,79 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta charset="UTF-8" />
+
+<style>
+div.container {
+    width: 100%;
+    border: 1px solid black;        
+    
+}
+
+footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}
+
+nav {
+    float: left;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+   
+nav ul a {
+    text-decoration: none;
+}
+
+article {
+    margin: 0;
+    border-left: 1px solid black;
+    padding: 145px;
+    overflow: hidden;    
+}
+</style>
 </h:head>
-<h:body>
-	  <p:link href="/pages/login.xhtml">Login</p:link> <br/>
-	  <p:link href="/pages/cadastroUsuario.xhtml">Cadastrar</p:link> <br/>
-</h:body>
+<body>
+
+<div class="container">
+
+<header>
+
+    <p:graphicImage  style="border-bottom:1px solid black;width:100%;height:300px;"   library="sistema" 
+						name="imagens/cru.png"
+						alt="#{msg['pages.comuns.cabecalho.img.alt']}" 
+						title="#{msg['pages.comuns.cabecalho.img.title']}" />
+						
+		</header>
+  
+<nav>
+  <ul>
+    <p:panel id="menuPnl" header="Menu" style="border:1px solid black;width:160px;">
+         <p:button href="login.xhtml" value="Login" icon="ui-icon-person"/>       
+ 		 <p:button href="cadastroUsuario.xhtml" value="Cadastro" icon="ui-icon-plus"/>
+		 <p:button href="http://esporte.sorocaba.sp.gov.br/destaques/cruzeirao2017/" value="Sobre" icon="ui-icon-info "/>
+	</p:panel>	
+		 
+  </ul>
+</nav>
+
+<article>
+  <h1>Cruzeirão 2017</h1>
+  <p>Torneio Aberto de Futsal Jornal Cruzeiro do Sul</p>
+  
+</article>
+
+<footer>Copyright JavaMen</footer>
+
+</div>
+
+</body>
 </html>
