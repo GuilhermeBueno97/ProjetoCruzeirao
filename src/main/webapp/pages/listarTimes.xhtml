@@ -14,10 +14,6 @@
 	
 	  <p:dataTable id="times" var="team" value="#{mbTime.times}" 
 	  			   emptyMessage="#{msg['pages.listaTimes.empty']}">
-        <f:facet name="header">
-            <p:inputText id="search" />
-            <p:commandButton value="#{msg['pages.listaTimes.pesquisa']}" type="button"/>
-        </f:facet>
         
         <p:column headerText="#{msg['pages.listaTimes.nome']}" >
         	<p:outputLabel value="#{team.nome}" />

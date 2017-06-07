@@ -42,7 +42,7 @@ private static UserDetailsService usuarioService = new UsuarioSistemaService();
         
         //Controla o acesso a página protegida do adm        
         //http.authorizeRequests().antMatchers("/pages/adm/**").hasRole("ADMIN");
-        http.authorizeRequests().antMatchers("/pages/listarTimes.xhtml").hasRole("DIRETOR");
+        //http.authorizeRequests().antMatchers("/pages/listarTimes.xhtml").hasRole("DIRETOR");
     	
     	//Login
     	http.formLogin().loginPage("/login.xhtml").permitAll()

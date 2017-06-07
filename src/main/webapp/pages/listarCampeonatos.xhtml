@@ -14,10 +14,6 @@
 	
 	  <p:dataTable id="championship" var="champs" value="#{mbCampeonato.campeonatos}" 
 	  			   emptyMessage="#{msg['pages.listaCampeonato.empty']}">
-        <f:facet name="header">
-            <p:inputText id="search" />
-            <p:commandButton value="#{msg['pages.listaCampeonato.pesquisa']}" type="button"/>
-        </f:facet>
         
         <p:column headerText="#{msg['pages.listaCampeonato.nome']}" >
         	<p:outputLabel value="#{champs.nome}" />

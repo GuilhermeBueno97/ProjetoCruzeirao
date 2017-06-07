@@ -13,11 +13,7 @@
 	<ui:define name="principal">
 	
 	  <p:dataTable id="usuario" var="user" value="#{mbUser.usuarios}" 
-	  			   emptyMessage="#{msg['pages.listaUsuario.empty']}">
-	  	<f:facet name="header">
-            <p:inputText id="search" />
-            <p:commandButton value="#{msg['pages.listaUsuario.pesquisa']}" type="button"/>
-        </f:facet>      
+	  			   emptyMessage="#{msg['pages.listaUsuario.empty']}">  
         
         <p:column headerText="#{msg['pages.listaUsuario.nome']}" >
         	<p:outputLabel value="#{user.nome}" />
