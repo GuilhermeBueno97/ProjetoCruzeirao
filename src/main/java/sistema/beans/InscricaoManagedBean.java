@@ -146,8 +146,8 @@ public class InscricaoManagedBean {
 		return usuarioAtual.getConvites();
 	}
 
-	public List<Time> getAllTimes() {
-		List<Time> times = timeService.getTimes();
+	public List<Inscricao> getAllInscricoes() {
+		/*List<Time> times = timeService.getTimes();
 		HashSet<Time> timesNaoInscritos = new HashSet<Time>();
 		List<Time> listaTimes = new ArrayList<Time>();
 
@@ -164,7 +164,26 @@ public class InscricaoManagedBean {
 		while (i.hasNext()) {
 			listaTimes.add(i.next());
 		}
-		return listaTimes;
+		return listaTimes;*/
+
+		HashSet<Inscricao> inscNotValidated = new HashSet<Inscricao>();
+		List<Inscricao> inscricoes = inscService.getInscricoes();
+		List<Inscricao> listaInscricoes = new ArrayList<Inscricao>();
+		
+		for(Inscricao i : inscricoes)
+		{
+			if (!i.isValidada() && !i.getPagamento()) {
+				inscNotValidated.add(i);
+			}
+		}
+		
+		Iterator<Inscricao> i = inscNotValidated.iterator();
+
+		while (i.hasNext()) {
+			listaInscricoes.add(i.next());
+		}
+		
+		return listaInscricoes;
 	}
 
 	public List<Inscricao> getInscricoesValidadas() {
@@ -187,40 +206,42 @@ public class InscricaoManagedBean {
 		return userService.getUsuarios();
 	}
 
-	public void remove(Time time) {
-		Inscricao insc = null;
-
-		for (Inscricao i : time.getInscricoes()) {
-			if (i.getTime() == time) {
-				insc = i;
+	public void remove(Inscricao inscricao) {
+		
+		Time t = null;
+		
+		for (Inscricao i : inscService.getInscricoes()) {
+			if(i.getTime() == inscricao.getTime())
+			{
+				t = i.getTime();
 			}
 		}
-		time.getInscricoes().remove(insc);
-		timeService.salvarEditado(time);
-		inscService.remove(insc);
+		
+		t.removeInscricao(inscricao);
+		timeService.salvarEditado(t);
+		inscService.remove(inscricao);
 	}
 
-	public void autorizar(Time time) {
-		Inscricao insc = null;
+	public void autorizar(Inscricao inscricao) {
 
-		for (Inscricao i : time.getInscricoes()) {
-			if (i.getTime() == time) {
-				insc = i;
-			}
-		}
-		insc.setPagamento(true);
-		insc.setValidada(true);
+		inscricao.setPagamento(true);
+		inscricao.setValidada(true);
 
-		inscService.salvarEditado(insc);
+		inscService.salvarEditado(inscricao);
 	}
 
 	public void removeConvite(Convite convite) {
+		Usuario user = convite.getUser();
 
 		for (Convite c : convite.getUser().getConvites()) {
 			if (c == convite) {
-				usuarioAtual.getConvites().remove(c);
+				user.removeConvite(c);
+				break;
 			}
 		}
+		
+		userService.salvarEditado(user);
+		convService.remove(convite);
 	}
 
 	public void autorizarConvite(Convite c) {
@@ -240,13 +261,13 @@ public class InscricaoManagedBean {
 		List<Usuario> users = userService.getUsuarios();
 		usuarioAtual = user.pesquisarPorUsername(usuarioAtual.getUserAtual());
 		Usuario aux = null;
-		
+
 		for (Usuario u : users) {
 			if (u.getUsername() == usuarioAtual.getUsername())
-				//users.remove(u);
+				// users.remove(u);
 				aux = u;
 		}
-		
+
 		users.remove(aux);
 		return users;
 	}

@@ -13,35 +13,35 @@
 
 	<ui:define name="principal">
 	
-	 <h:form id="formTableTimes">
+	 <h:form id="formTableInsc">
 	
-		<p:dataTable value="#{mbInsc.allTimes}" var="t"
-			id="tableTimes">
+		<p:dataTable value="#{mbInsc.allInscricoes}" var="i"
+			id="tableInscricoes">
 			
 			<p:column headerText="#{msg['pages.autorizaInsc.nomeTime']}">
-				<h:outputText value="#{t.nome}" />
+				<h:outputText value="#{i.time.nome}" />
 			</p:column>
 			
 			<p:column headerText="#{msg['pages.autorizaInsc.diretor']}">
-				<h:outputText value="#{t.diretor}" />
+				<h:outputText value="#{i.time.diretor.nome}" />
 			</p:column>
 			
 			<p:column headerText="#{msg['pages.autorizaInsc.nomeCategoria']}">
-				<h:outputText value="#{t.inscricoes}"/>
+				<h:outputText value="#{i.categoria.nome}"/>
 			</p:column>
 			
 			<p:column style="width:100px" headerText="#{msg['pages.autorizaInsc.autorizar']}">
 					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
 						style="text-align:center"
-						actionListener="#{mbInsc.remove(t)}"
-						update=":formTableTimes" />
+						actionListener="#{mbInsc.remove(i)}"
+						update=":formTableInsc" />
 			</p:column>
 			
 			<p:column style="width:100px" headerText="#{msg['pages.autorizaInsc.confirmar']}">
 					<p:commandLink id="confirmar" styleClass="ui-icon ui-icon-check"
 						style="text-align:center"
-						actionListener="#{mbInsc.autorizar(t)}"
-						update=":formTableTimes" />
+						actionListener="#{mbInsc.autorizar(i)}"
+						update=":formTableInsc" />
 			</p:column>
 
 		</p:dataTable>

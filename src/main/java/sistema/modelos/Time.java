@@ -55,6 +55,10 @@ public class Time implements Serializable{
 	public void addInscricao(Inscricao inscricao) {
 		this.inscricoes.add(inscricao);
 	}
+	public void removeInscricao(Inscricao inscricao) {
+		this.inscricoes.remove(inscricao);
+	}
+	
 	@Override
 	public String toString() {
 		return "Time [id_time=" + id_time + ", nome=" + nome + ", diretor=" + diretor + ", inscricoes=" + inscricoes

@@ -22,9 +22,7 @@
       <p:inputText value="#{mbCampeonato.campeonato.nome}"/>
       
 	  <p:outputLabel for="mask0" value="#{msg['pages.cadastroCampeonato.databegin']}" /> 
-	  <p:calendar id="mask0" pattern="dd-MM-yyyy" mask="true" value="#{mbCampeonato.data_inicio}">
-	  	<f:validator />
-	  </p:calendar>
+	  <p:calendar id="mask0" pattern="dd-MM-yyyy" mask="true" value="#{mbCampeonato.data_inicio}"/>
 	  
 	  <p:outputLabel for="mask1" value="#{msg['pages.cadastroCampeonato.dataend']}" /> 
 	  <p:calendar id="mask1" pattern="dd-MM-yyyy" mask="true" value="#{mbCampeonato.data_fim}"/>

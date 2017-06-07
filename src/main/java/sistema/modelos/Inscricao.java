@@ -104,6 +104,9 @@ public class Inscricao implements Serializable{
 	public void addJogador(Usuario u){
 		jogadores.add(u);
 	}
+	public void removeJogador(Usuario u){
+		jogadores.remove(u);
+	}
 	public Usuario getTecnico() {
 		return tecnico;
 	}

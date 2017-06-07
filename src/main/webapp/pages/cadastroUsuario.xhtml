@@ -12,7 +12,7 @@
     <h:form style="float:center" id="cadastro" prependId="false">
 	<div align="center">
     
-    	<p:panel id="pnl" header="Cadastrar Usuario" style="border-color:black;border-width:2px; border-style:solid; width:550px; margin-left:auto; margin-right:auto;">
+    	<p:panel id="pnl" header="Cadastrar Usuario" style="border-color:black;border-width:2px; border-style:solid; width:600px; margin-left:auto; margin-right:auto;">
         <p:messages id="messages" />
         <h:panelGrid columns="2" cellpadding="5" id="panel" style="margin:1%; text-align: center">
         
@@ -23,7 +23,7 @@
             <p:inputText id="Login" required="true" value="#{mbUser.usuario.username}" label="Login"/>
            
             <p:outputLabel size="30" value="Senha: *" />
-            <p:inputText id="Senha" required="true" value="#{mbUser.usuario.senha}" label="Senha"/>
+         	<p:password id="nonFeedback" value="#{mbUser.usuario.senha}" label="Senha" required="true"/>
          	
             <p:outputLabel size="30" value="CPF: *" />
             <p:inputText id="Cpf" required="true" value="#{mbUser.usuario.cpf}" label="Cpf"/> 
