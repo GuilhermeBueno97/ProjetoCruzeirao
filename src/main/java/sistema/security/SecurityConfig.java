@@ -9,6 +9,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import sistema.dao.UsuarioDAO;
+import sistema.modelos.Papel;
+import sistema.modelos.Usuario;
+
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
@@ -42,7 +46,6 @@ private static UserDetailsService usuarioService = new UsuarioSistemaService();
         
         //Controla o acesso a página protegida do adm        
         //http.authorizeRequests().antMatchers("/pages/adm/**").hasRole("ADMIN");
-        //http.authorizeRequests().antMatchers("/pages/listarTimes.xhtml").hasRole("DIRETOR");
     	
     	//Login
     	http.formLogin().loginPage("/login.xhtml").permitAll()
