@@ -1,7 +1,7 @@
 package sistema.modelos;
 
 public enum Papel {
-	ADMIN, DIRETOR, COMUM, ORGANIZADOR, TECNICO, JUIZ;
+	ADMIN, DIRETOR, COMUM, ORGANIZADOR, TECNICO, JUIZ, JOGADOR;
 
 	public String toString() {
 		switch (this) {
@@ -17,6 +17,8 @@ public enum Papel {
 			return "TECNICO";
 		case JUIZ:
 			return "JUIZ";
+		case JOGADOR:
+			return "JOGADOR";
 		}
 		return null;
 	}

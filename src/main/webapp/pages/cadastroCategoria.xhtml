@@ -4,50 +4,51 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui2="http://java.sun.com/jsf/facelets"
->
-	
+	xmlns:ui2="http://java.sun.com/jsf/facelets">
+
 	<ui:define name="title">
 		<h:outputText value="#{msg['pages.cadastroCategoria.title']}" />
 	</ui:define>
-	
-	
+
+
 	<ui:define name="principal">
-	  
-	  <p:panel id="pnl" header="#{msg['pages.cadastroCategoria.menu']}"  style="border-color:black;border-width:2px; border-style:solid; ">
-	  <h:outputLabel value="#{mbCampeonato.campeonato.nome}" />
-	  <h:form id="formCategoria">
-	  <p:panelGrid columns="2">
-      <p:outputLabel value="#{msg['pages.cadastroCategoria.nome']}" />
-      <p:inputText value="#{mbCampeonato.categoria.nome}"/>
-	  <p:outputLabel value="#{msg['pages.cadastroCategoria.idademin']}" />
-	  <p:inputText value="#{mbCampeonato.categoria.idade_min}"/>
-	  
-        <p:outputLabel for="sexo" value="#{msg['pages.cadastroCategoria.sexo']}" />
-        <p:selectOneRadio id="sexo" value="#{mbCampeonato.categoria.sexo}">
-            <f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
-            <f:selectItem itemLabel="Feminino" itemValue="Feminino" />
-        </p:selectOneRadio>
-        <p:outputLabel for="insc_jog" value="#{msg['pages.cadastroCategoria.insc_jog']}" />
-        <p:selectOneRadio id="insc_jog" value="#{mbCampeonato.categoria.insc_jogadores}">
-            <f:selectItem itemLabel="Sim" itemValue="Sim" />
-            <f:selectItem itemLabel="Não" itemValue="Não" />
-        </p:selectOneRadio>
- 
-	  </p:panelGrid>
-	  <p:commandButton value="#{msg['pages.cadastroCategoria.btnNewCategoria']}"
-	                 update=":formCategoria"
-	                 action="#{mbCampeonato.salvarNewCategoria}"
-	                 ajax="false"
-	                 />
-	  <p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}"
-	                 update=":formCategoria"
-	                 action="#{mbCampeonato.salvar}"
-	                 ajax="false"
-	                 />
-       </h:form>
-	</p:panel>
-	   
+
+		<p:panel id="pnl" header="#{msg['pages.cadastroCategoria.menu']}"
+			style="border-color:black;border-width:2px; border-style:solid; ">
+			<p:outputLabel value="Campeonato: "/>
+			<p:outputLabel value="#{mbCampeonato.campeonato.nome}"/>
+			<h:form id="formCategoria">
+				<p:panelGrid columns="2">
+					<p:outputLabel value="#{msg['pages.cadastroCategoria.nome']}" />
+					<p:inputText value="#{mbCampeonato.categoria.nome}" />
+					<p:outputLabel value="#{msg['pages.cadastroCategoria.idademin']}" />
+					<p:inputText value="#{mbCampeonato.categoria.idade_min}" />
+
+					<p:outputLabel for="sexo"
+						value="#{msg['pages.cadastroCategoria.sexo']}" />
+					<p:selectOneRadio id="sexo" value="#{mbCampeonato.categoria.sexo}">
+						<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+						<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+					</p:selectOneRadio>
+					<p:outputLabel for="insc_jog"
+						value="#{msg['pages.cadastroCategoria.insc_jog']}" />
+					<p:selectOneRadio id="insc_jog"
+						value="#{mbCampeonato.categoria.insc_jogadores}">
+						<f:selectItem itemLabel="Sim" itemValue="Sim" />
+						<f:selectItem itemLabel="Não" itemValue="Não" />
+					</p:selectOneRadio>
+
+				</p:panelGrid>
+				<p:commandButton
+					value="#{msg['pages.cadastroCategoria.btnNewCategoria']}"
+					update=":formCategoria" action="#{mbCampeonato.salvarNewCategoria}"
+					ajax="false" />
+				<p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}"
+					update=":formCategoria" action="#{mbCampeonato.salvar}"
+					ajax="false" />
+			</h:form>
+		</p:panel>
+
 	</ui:define>
 </ui:composition>
 

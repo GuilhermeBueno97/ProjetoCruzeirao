@@ -44,7 +44,7 @@
         <h:outputLabel for="users" value="#{msg['pages.inscreverTime.players']}:" />
         
         <p:selectCheckboxMenu id="users" style="width:150px" value="#{mbInsc.usuariosList}" label="Select One" converter="userConverter" multiple="true">
-            <f:selectItems value="#{mbInsc.usuarios}" var="user" itemValue="#{user}" itemLabel="#{user.nome}"/>
+            <f:selectItems value="#{mbInsc.todosMenosDiretor}" var="user" itemValue="#{user}" itemLabel="#{user.nome}"/>
         </p:selectCheckboxMenu>
 	  </p:panelGrid>
 	  <p:commandButton value="#{msg['pages.inscreverTime.btnSalvar']}"

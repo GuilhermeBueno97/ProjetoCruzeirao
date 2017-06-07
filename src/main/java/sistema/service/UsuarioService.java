@@ -25,7 +25,6 @@ public class UsuarioService {
 
 	public Usuario getUsuarioAtual(String name) {
 
-		Usuario user = new Usuario();
 		List<Usuario> users = this.getUsuarios();
 
 		for (Usuario u : users) {
@@ -33,8 +32,7 @@ public class UsuarioService {
 				return u;
 		}
 
-		return user;
-
+		return null;
 	}
 
 	public Usuario salvarEditado(Usuario usuario) {

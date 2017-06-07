@@ -21,8 +21,10 @@ public class UsuarioManagedBean {
 	private Calendar data_cal = new GregorianCalendar();
 
 	public String salvar() {
+
 		data_cal.setTime(data);
 		usuario.setData_nasc(data_cal);
+
 		usuario.setPapel(Papel.COMUM);
 		service.salvar(usuario);
 		usuario = new Usuario();

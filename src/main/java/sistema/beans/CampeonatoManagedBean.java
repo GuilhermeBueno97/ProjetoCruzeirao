@@ -5,13 +5,21 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
+import sistema.dao.UsuarioDAO;
 import sistema.modelos.Campeonato;
 import sistema.modelos.Categoria;
+import sistema.modelos.Papel;
+import sistema.modelos.Usuario;
 import sistema.service.CampeonatoService;
 import sistema.service.CategoriaService;
+import sistema.service.UsuarioService;
 
 @ManagedBean(name = "mbCampeonato")
 @SessionScoped
@@ -28,18 +36,25 @@ public class CampeonatoManagedBean {
 	private Calendar fim_cal = new GregorianCalendar();
 	private Calendar inicio_insc_cal = new GregorianCalendar();
 	private Calendar fim_insc_cal = new GregorianCalendar();
-	
+	private Usuario usuarioAtual = new Usuario();
+	private UsuarioDAO userDAO = new UsuarioDAO();
+	private UsuarioService userService = new UsuarioService();
+
 	public String salvar() {
 		inicio_cal.setTime(data_inicio);
 		fim_cal.setTime(data_fim);
 		inicio_insc_cal.setTime(data_insc_inicio);
 		fim_insc_cal.setTime(data_insc_fim);
-		
+
 		campeonato.setData_inicio(inicio_cal);
 		campeonato.setData_fim(fim_cal);
 		campeonato.setData_insc_inicio(inicio_insc_cal);
 		campeonato.setData_insc_fim(fim_insc_cal);
-		
+
+		usuarioAtual = userDAO.pesquisarPorUsername(usuarioAtual.getUserAtual());
+		usuarioAtual.setPapel(Papel.ORGANIZADOR);
+
+		userService.salvarEditado(usuarioAtual);
 		catService.salvar(categoria);
 		campeonato.addCategorias(categoria);
 		campService.salvar(campeonato);
@@ -106,4 +121,5 @@ public class CampeonatoManagedBean {
 	public void setData_insc_fim(Date data_insc_fim) {
 		this.data_insc_fim = data_insc_fim;
 	}
+
 }

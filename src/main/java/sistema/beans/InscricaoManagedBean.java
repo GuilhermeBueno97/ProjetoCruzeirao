@@ -14,6 +14,7 @@ import sistema.modelos.Campeonato;
 import sistema.modelos.Categoria;
 import sistema.modelos.Convite;
 import sistema.modelos.Inscricao;
+import sistema.modelos.Papel;
 import sistema.modelos.Time;
 import sistema.modelos.Usuario;
 import sistema.service.CampeonatoService;
@@ -44,23 +45,10 @@ public class InscricaoManagedBean {
 	private List<Convite> convites = new ArrayList<Convite>();
 	private Calendar data_cal = Calendar.getInstance();
 
-	/*
-	 * public String salvar(){ inscricao.setTime(timeAtual);
-	 * inscricao.setCategoria(catAtual);
-	 * inscricao.getCategoria().setCampeonato(campAtual);
-	 * inscricao.setJogadores(usuariosList);
-	 * 
-	 * inscService.salvar(inscricao);
-	 * 
-	 * timeAtual.addInscricao(inscricao); timeService.salvarEditado(timeAtual);
-	 * 
-	 * return "inicio"; }
-	 */
 	public String salvar() {
 		inscricao.setTime(timeAtual);
 		inscricao.setCategoria(catAtual);
 		inscricao.getCategoria().setCampeonato(campAtual);
-		// inscricao.setJogadores(usuariosList);
 
 		inscService.salvar(inscricao);
 
@@ -142,11 +130,10 @@ public class InscricaoManagedBean {
 
 	public List<Time> getTimesUsuarioAtual() {
 		usuarioAtual = user.pesquisarPorUsername(usuarioAtual.getUserAtual());
-
 		times = timeService.getTimes();
 
 		for (Time t : times) {
-			if (t.getDiretor().getNome() != usuarioAtual.getNome()) {
+			if (t.getDiretor().getUsername() != usuarioAtual.getUsername()) {
 				times.remove(t);
 			}
 		}
@@ -240,12 +227,28 @@ public class InscricaoManagedBean {
 		Inscricao inscricao = c.getInscricao();
 		Usuario user = c.getUser();
 
+		user.setPapel(Papel.JOGADOR);
 		inscricao.addJogador(user);
 		user.removeConvite(c);
 
 		inscService.salvarEditado(inscricao);
 		userService.salvarEditado(user);
 		convService.remove(c);
+	}
+
+	public List<Usuario> getTodosMenosDiretor() {
+		List<Usuario> users = userService.getUsuarios();
+		usuarioAtual = user.pesquisarPorUsername(usuarioAtual.getUserAtual());
+		Usuario aux = null;
+		
+		for (Usuario u : users) {
+			if (u.getUsername() == usuarioAtual.getUsername())
+				//users.remove(u);
+				aux = u;
+		}
+		
+		users.remove(aux);
+		return users;
 	}
 
 	public List<Convite> getConvites() {
