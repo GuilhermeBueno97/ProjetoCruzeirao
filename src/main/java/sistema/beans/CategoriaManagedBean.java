@@ -10,7 +10,6 @@ import sistema.modelos.Categoria;
 import sistema.modelos.Inscricao;
 import sistema.modelos.Time;
 import sistema.service.CategoriaService;
-import sistema.service.InscricaoService;
 import sistema.service.TimeService;
 
 @ManagedBean(name="mbCategoria")
@@ -20,7 +19,6 @@ public class CategoriaManagedBean {
 	private CategoriaService service = new CategoriaService();
 	private Time time = new Time();
 	private Inscricao inscricao = new Inscricao();
-	private InscricaoService inscService = new InscricaoService();
 	
 	public Time getTime() {
 		return time;
@@ -58,7 +56,6 @@ public class CategoriaManagedBean {
 		List<Time> times = ts.getTimes();
 		ArrayList<Time> times2 = new ArrayList<Time>();
 		times2.addAll(times);
-			
 		
 		return times2;
 	}

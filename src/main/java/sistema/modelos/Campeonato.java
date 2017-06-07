@@ -2,7 +2,8 @@ package sistema.modelos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,11 +31,12 @@ public class Campeonato implements Serializable{
 	
 	@OneToMany(mappedBy="campeonato")
 	private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+
+	private Calendar data_inicio = new GregorianCalendar();
+	private Calendar data_fim = new GregorianCalendar();
+	private Calendar data_insc_inicio = new GregorianCalendar();
+	private Calendar data_insc_fim = new GregorianCalendar();
 	
-	private Date data_inicio;
-	private Date data_fim;
-	private Date data_insc_inicio;
-	private Date data_insc_fim;
 	private double taxa_insc;
 	private int jogadores_min;
 	private int jogadores_max;
@@ -57,29 +59,28 @@ public class Campeonato implements Serializable{
 	public void addCategorias(Categoria categoria) {
 		this.categorias.add(categoria);
 	}
-	
-	public Date getData_inicio() {
+	public Calendar getData_inicio() {
 		return data_inicio;
 	}
-	public void setData_inicio(Date data_inicio) {
+	public void setData_inicio(Calendar data_inicio) {
 		this.data_inicio = data_inicio;
 	}
-	public Date getData_fim() {
+	public Calendar getData_fim() {
 		return data_fim;
 	}
-	public void setData_fim(Date data_fim) {
+	public void setData_fim(Calendar data_fim) {
 		this.data_fim = data_fim;
 	}
-	public Date getData_insc_inicio() {
+	public Calendar getData_insc_inicio() {
 		return data_insc_inicio;
 	}
-	public void setData_insc_inicio(Date data_insc_inicio) {
+	public void setData_insc_inicio(Calendar data_insc_inicio) {
 		this.data_insc_inicio = data_insc_inicio;
 	}
-	public Date getData_insc_fim() {
+	public Calendar getData_insc_fim() {
 		return data_insc_fim;
 	}
-	public void setData_insc_fim(Date data_insc_fim) {
+	public void setData_insc_fim(Calendar data_insc_fim) {
 		this.data_insc_fim = data_insc_fim;
 	}
 	public double getTaxa_insc() {

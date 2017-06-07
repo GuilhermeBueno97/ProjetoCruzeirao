@@ -1,7 +1,8 @@
 package sistema.modelos;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
@@ -26,17 +27,16 @@ public class Usuario implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id_usuario;
-	
-	//@Transient
-	private ArrayList<Papel> papeis = new ArrayList<Papel>();
-	
+
+	private Papel papel;
 	private String nome;
 	private String cpf;
 	private String rg;
-	private Date data_nasc;
+	private Calendar data_nasc = new GregorianCalendar();
 	private String username;
 	private String senha;
 	private String email;
+	private ArrayList<Convite> convites = new ArrayList<Convite>();
 	
 	public int getId_usuario() {
 		return id_usuario;
@@ -44,16 +44,6 @@ public class Usuario implements Serializable{
 
 	public void setId_usuario(int id_usuario) {
 		this.id_usuario = id_usuario;
-	}
-
-	public ArrayList<Papel> getPapeis() {
-		return papeis;
-	}
-
-	public void setPapeis(ArrayList<Papel> papeis) {
-		//Papel papel = Papel.ADMIN;
-		//papeis.add(papel);
-		this.papeis = papeis;
 	}
 
 	public String getNome() {
@@ -104,11 +94,11 @@ public class Usuario implements Serializable{
 		this.rg = rg;
 	}
 
-	public Date getData_nasc() {
+	public Calendar getData_nasc() {
 		return data_nasc;
 	}
 
-	public void setData_nasc(Date data_nasc) {
+	public void setData_nasc(Calendar data_nasc) {
 		this.data_nasc = data_nasc;
 	}
 
@@ -152,5 +142,28 @@ public class Usuario implements Serializable{
 	}
 	public String getUserAtual(){
 		return (((SecurityContext) SecurityContextHolder.getContext()).getAuthentication().getName());
+	}
+
+	public Papel getPapel() {
+		return papel;
+	}
+
+	public void setPapel(Papel papel) {
+		this.papel = papel;
+	}
+	
+	public ArrayList<Convite> getConvites() {
+		return convites;
+	}
+
+	public void setConvites(ArrayList<Convite> convites) {
+		this.convites = convites;
+	}
+	
+	public void addConvite(Convite c){
+		this.convites.add(c);
+	}
+	public void removeConvite(Convite c){
+		this.convites.remove(c);
 	}
 }

@@ -32,9 +32,12 @@
       	</p:column>
         
         <p:column headerText="#{msg['pages.listaUsuario.datanasc']}" >
-        	<p:outputLabel value="#{user.data_nasc}" />
+        	<p:outputLabel value="#{user.data_nasc.getTime()}" />
       	</p:column>
       	
+      	<p:column headerText="#{msg['pages.listaUsuario.papel']}" >
+        	<p:outputLabel value="#{user.papel}" />
+      	</p:column>
         <!-- <p:column width="150" headerText="#{msg['pages.listaCampeonato.aceitar']}">             
         <p:selectBooleanCheckbox value=" "/>
         </p:column> -->

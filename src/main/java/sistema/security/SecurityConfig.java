@@ -23,7 +23,6 @@ private static UserDetailsService usuarioService = new UsuarioSistemaService();
 
        auth.inMemoryAuthentication().withUser("adm").password("123").roles("ADMIN");
 	   auth.userDetailsService(usuarioService);
-	   
         
     }
 
@@ -43,6 +42,7 @@ private static UserDetailsService usuarioService = new UsuarioSistemaService();
         
         //Controla o acesso a página protegida do adm        
         //http.authorizeRequests().antMatchers("/pages/adm/**").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers("/pages/listarTimes.xhtml").hasRole("DIRETOR");
     	
     	//Login
     	http.formLogin().loginPage("/login.xhtml").permitAll()
@@ -57,7 +57,6 @@ private static UserDetailsService usuarioService = new UsuarioSistemaService();
 
         // Todas as requisições para partes internas da aplicação devem ser autenticadas
 		http.authorizeRequests().anyRequest().authenticated();
-        //http.antMatcher("/pages/cadastroUsuario.xhtml").anonymous();	
     }
 
     @Override

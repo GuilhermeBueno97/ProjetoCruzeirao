@@ -32,22 +32,11 @@
             <p:inputText id="Rg" required="true" value="#{mbUser.usuario.rg}" label="Rg"/>
             
             <p:outputLabel for="mask" value="Data de Nascimento:" />
-        	<p:calendar id="mask" required="true" value="#{mbUser.usuario.data_nasc}" pattern="dd-MM-yyyy" mask="true" />
+        	<p:calendar id="mask" required="true" value="#{mbUser.data}" pattern="dd-MM-yyyy" mask="true" />
             
             <p:outputLabel size="30" value="Email: *" />
             <p:inputText id="Email" required="true" value="#{mbUser.usuario.email}" label="Email"/>
-            
-            <p:outputLabel for="func" value="Função:" />
-            <p:selectCheckboxMenu id="func" label="Funções" value="#{mbUser.usuario.papeis}">
-	            <f:selectItem itemLabel="Jogador" itemValue="Jogador"/>
-	            <f:selectItem itemLabel="Técnico" itemValue="Técnico"/>
-	            <f:selectItem itemLabel="Diretor" itemValue="Diretor"/>
-	            <f:selectItem itemLabel="Juiz" itemValue="Juiz"/>
-	            <f:selectItem itemLabel="Preparador Fisico" itemValue="Preparador Fisico"/>
-	            <f:selectItem itemLabel="Massagista" itemValue="Massagista"/>
-	            <f:selectItem itemLabel="Organizador" itemValue="Organizador"/>
-            </p:selectCheckboxMenu>
-            
+           
         </h:panelGrid>
         <p:commandButton id="saveBtn" value="Save" icon="ui-icon-check" style="margin:0" update="growl" 
         action="#{mbUser.salvar}"/>

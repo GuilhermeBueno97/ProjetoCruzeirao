@@ -30,7 +30,7 @@ public class UsuarioSistemaService implements UserDetailsService{
 	private Collection<? extends GrantedAuthority> obtemGruposdoUsuario(Usuario usuario) {
 		List<GrantedAuthority> papeis = new ArrayList<>();
 		
-		papeis.add(new SimpleGrantedAuthority("ROLE_" + usuario.getPapeis()));
+		papeis.add(new SimpleGrantedAuthority("ROLE_" + usuario.getPapel()));
 
 		return papeis;
 	}

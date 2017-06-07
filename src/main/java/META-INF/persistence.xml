@@ -8,6 +8,7 @@
 	<class>sistema.modelos.Inscricao</class>
 	<class>sistema.modelos.Local</class>
 	<class>sistema.modelos.Jogo</class>
+	<class>sistema.modelos.Convite</class>
 	<properties>
 		<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DBTeste;create=true"/>
 		<property name="javax.persistence.jdbc.user" value="user"/>

@@ -1,49 +1,60 @@
 package sistema.service;
 
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import sistema.modelos.Usuario;
+import sistema.modelos.Convite;
 
-public class UsuarioService {
+public class ConviteService {
 	private EntityManagerFactory emf;
 	
-	public UsuarioService(){
+	public ConviteService(){
 		emf = Persistence.createEntityManagerFactory("CruzeiraoJavamen");
 	}
 	
-	public void salvar(Usuario usuario){
+	public void salvar(Convite convite){
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-			em.persist(usuario);
+			em.persist(convite);
 		em.getTransaction().commit();
 		em.close();
 	}
 	
-	public Usuario salvarEditado(Usuario usuario) {
-
-		Usuario user = null;
+	public void remove(Convite convite) {
 		EntityManager em = emf.createEntityManager();
 		
 		em.getTransaction().begin();
-			user = em.merge(usuario);
+			Convite conv = em.merge(convite);
+			em.remove(conv);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public Convite salvarEditado(Convite convite) {
+
+		Convite c = null;
+		EntityManager em = emf.createEntityManager();
+		
+		em.getTransaction().begin();
+			c = em.merge(convite);
 		em.getTransaction().commit();
 		em.close();
 		
-		return user;
+		return c;
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Usuario> getUsuarios(){
-		List<Usuario> users;
+	public List<Convite> getConvites(){
+		List<Convite> convites;
 		
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("Select u From Usuario u");
-		users = q.getResultList();
+		Query q = em.createQuery("Select u From Convite u");
+		convites = q.getResultList();
 		em.close();
-		return users; 
+		return convites; 
 	}
 }

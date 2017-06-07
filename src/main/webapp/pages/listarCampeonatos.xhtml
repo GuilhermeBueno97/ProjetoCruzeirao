@@ -28,19 +28,19 @@
       	</p:column>
         
         <p:column headerText="#{msg['pages.listaCampeonato.data_inicio']}" >
-        	<p:outputLabel value="#{champs.data_inicio}" />
+        	<p:outputLabel value="#{champs.data_inicio.getTime()}"/>
       	</p:column>
            
         <p:column headerText="#{msg['pages.listaCampeonato.data_fim']}"  >
-        	<p:outputLabel value="#{champs.data_fim}" />
+        	<p:outputLabel value="#{champs.data_fim.getTime()}" />
       	</p:column>
                   
         <p:column headerText="#{msg['pages.listaCampeonato.data_insc_inicio']}" >
-        	<p:outputLabel value="#{champs.data_insc_inicio}" />
+        	<p:outputLabel value="#{champs.data_insc_inicio.getTime()}" />
       	</p:column>
         
         <p:column headerText="#{msg['pages.listaCampeonato.data_insc_fim']}" >
-        	<p:outputLabel value="#{champs.data_insc_fim}" />
+        	<p:outputLabel value="#{champs.data_insc_fim.getTime()}" />
       	</p:column>
         
         <p:column headerText="#{msg['pages.listaCampeonato.jog_min']}" >

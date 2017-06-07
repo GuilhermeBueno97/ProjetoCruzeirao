@@ -20,18 +20,25 @@
 	  <p:panelGrid columns="2">          
       <p:outputLabel value="#{msg['pages.cadastroCampeonato.nome']}" /> 
       <p:inputText value="#{mbCampeonato.campeonato.nome}"/>
-	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.databegin']}" /> 
-	  <p:calendar id="button1" pattern="dd-MM-yyyy" showOn="button" value="#{mbCampeonato.campeonato.data_inicio}"/>
-	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.dataend']}" /> 
-	  <p:calendar id="button2" pattern="dd-MM-yyyy" showOn="button" value="#{mbCampeonato.campeonato.data_fim}"/>
-	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.inscbegin']}" />
-	  <p:calendar id="button3" pattern="dd-MM-yyyy" showOn="button" value="#{mbCampeonato.campeonato.data_insc_inicio}"/>
-	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.inscend']}" />
-	  <p:calendar id="button4" pattern="dd-MM-yyyy" showOn="button" value="#{mbCampeonato.campeonato.data_insc_fim}"/>
+      
+	  <p:outputLabel for="mask0" value="#{msg['pages.cadastroCampeonato.databegin']}" /> 
+	  <p:calendar id="mask0" pattern="dd-MM-yyyy" mask="true" value="#{mbCampeonato.data_inicio}"/>
+	  
+	  <p:outputLabel for="mask1" value="#{msg['pages.cadastroCampeonato.dataend']}" /> 
+	  <p:calendar id="mask1" pattern="dd-MM-yyyy" mask="true" value="#{mbCampeonato.data_fim}"/>
+	  
+	  <p:outputLabel for="mask2" value="#{msg['pages.cadastroCampeonato.inscbegin']}" />
+	  <p:calendar id="mask2" pattern="dd-MM-yyyy" mask="true" value="#{mbCampeonato.data_insc_inicio}"/>
+	  
+	  <p:outputLabel for="mask3" value="#{msg['pages.cadastroCampeonato.inscend']}" />
+	  <p:calendar id="mask3" pattern="dd-MM-yyyy" mask="true" value="#{mbCampeonato.data_insc_fim}"/>
+	  
 	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.jogadores_min']}" /> 
       <p:inputText value="#{mbCampeonato.campeonato.jogadores_min}"/>
+      
       <p:outputLabel value="#{msg['pages.cadastroCampeonato.jogadores_max']}" /> 
       <p:inputText value="#{mbCampeonato.campeonato.jogadores_max}"/>
+	  
 	  <p:outputLabel value="#{msg['pages.cadastroCampeonato.taxa']}" />
 	  <p:spinner id="prefix" value="#{mbCampeonato.campeonato.taxa_insc}" prefix="R$" min="0" />
                  

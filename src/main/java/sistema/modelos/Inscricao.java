@@ -101,6 +101,9 @@ public class Inscricao implements Serializable{
 	public void setJogadores(ArrayList<Usuario> jogadores) {
 		this.jogadores = jogadores;
 	}
+	public void addJogador(Usuario u){
+		jogadores.add(u);
+	}
 	public Usuario getTecnico() {
 		return tecnico;
 	}

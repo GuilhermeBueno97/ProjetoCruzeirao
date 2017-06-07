@@ -1,5 +1,7 @@
 package sistema.beans;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -26,5 +28,9 @@ public class LocalManagedBean {
 
 	public void setLocal(Local local) {
 		this.local = local;
+	}
+	
+	public List<Local> getLocais(){
+		return service.getLocais();
 	}
 }

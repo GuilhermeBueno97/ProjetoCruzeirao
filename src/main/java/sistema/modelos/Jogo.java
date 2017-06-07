@@ -2,7 +2,8 @@ package sistema.modelos;
 
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,9 +26,7 @@ public class Jogo implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int jogoID;
 	
-	private Date data;
-	//private Time timeA;
-	//private Time timeB;
+	private Calendar data = new GregorianCalendar();
 	
 	@ManyToOne
 	private Inscricao timeA;
@@ -41,10 +40,10 @@ public class Jogo implements Serializable {
 	private Jogo prox_jogo;
 	
 
-	public Date getData() {
+	public Calendar getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(Calendar data) {
 		this.data = data;
 	}
 	public Inscricao getTimeA() {

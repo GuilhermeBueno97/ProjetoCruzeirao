@@ -6,29 +6,34 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import sistema.dao.UsuarioDAO;
+import sistema.modelos.Papel;
 import sistema.modelos.Time;
 import sistema.modelos.Usuario;
 import sistema.service.TimeService;
+import sistema.service.UsuarioService;
 
 @ManagedBean(name="mbTime")
 @SessionScoped
 public class TimeManagedBean {
 	private Time time = new Time();
-	private TimeService service = new TimeService();
+	private TimeService timeService = new TimeService();
 	private Usuario usuarioAtual = new Usuario();
 	private UsuarioDAO user = new UsuarioDAO();
+	private UsuarioService usuarioService = new UsuarioService();
 	
 	public String salvar(){
 		usuarioAtual = user.pesquisarPorUsername(usuarioAtual.getUserAtual());
 		time.setDiretor(usuarioAtual);
-		service.salvar(time);
+		usuarioAtual.setPapel(Papel.DIRETOR);
+		timeService.salvar(time);
+		usuarioService.salvarEditado(usuarioAtual);
 		time = new Time();
 		
 		return "inicio";
 	}
 
 	public List<Time> getTimes(){
-		return service.getTimes();
+		return timeService.getTimes();
 	}
 	
 	public Time getTime() {
@@ -40,6 +45,6 @@ public class TimeManagedBean {
 	}
 	
 	public void remove(Time time) {
-		service.remove(time);
+		timeService.remove(time);
 	}
 }
